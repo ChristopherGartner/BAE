@@ -22,7 +22,7 @@ class Sessions:
                                 # no project given or above threshold allows request
                                 return True
                             else:
-                                return project in s.projects
+                                return int(project) in s.projects
                         else:
                             return False
                     else:

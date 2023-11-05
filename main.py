@@ -105,6 +105,14 @@ class BAE:
                 return redirect("/login")
             return render_template("dashboard.html")
 
+        @self.app.route('/project/<project_id>')
+        def project(project_id):
+            if not self.sessions.validate(request.cookies.get('token', default=''), role_required="EMPLOYEE", project=project_id):
+                return redirect("/login")
+
+            #TODO get corresponding project data and prepare response
+            return make_response()
+
         # API
 
         @self.app.route('/api/v1/login', methods=['POST'])
