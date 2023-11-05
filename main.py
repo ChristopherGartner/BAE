@@ -16,8 +16,8 @@ from os.path import dirname, abspath
 from werkzeug.utils import redirect
 
 from db import MySQLPool
+from sessions import Sessions
 
-stage = os.environ["STAGE"]
 force_mobile = False
 
 log = logging.getLogger('werkzeug')
@@ -50,6 +50,7 @@ class BAE:
             args['dbschema'] = dbschema
         self.db = MySQLPool(host=args['dbhost'], user=args['dbuser'], password=args['dbpw'], database=args['dbschema'],
                             pool_size=15)
+        self.sessions = Sessions(self.db)
 
 
 
@@ -85,10 +86,39 @@ class BAE:
 
         self.app = Flask(__name__)
 
+        @self.app.before_request
+        def before():
+            self.__log(request)
+
         @self.app.route('/', methods=['GET', 'POST'])
         def index():
-            self.__log(request)
-            return make_response(200)
+            return render_template("index.html")
+
+        @self.app.route('/login', methods=['GET'])
+        def login():
+            return render_template("login.html")
+
+        # Protected routes
+        @self.app.route('/dashboard', methods=['GET'])
+        def dashboard():
+            if not self.sessions.validate(request.cookies.get('token', default='')):
+                return redirect("/login")
+            return render_template("dashboard.html")
+
+        # API
+
+        @self.app.route('/api/v1/login', methods=['POST'])
+        def api_login():
+            username = request.form['username']
+            password = request.form['password']
+
+            print(f"Received username: {username}, password: {password}")
+            token = self.sessions.validate(username, password)
+            if token is None:
+                return jsonify({"error": "username & password combination invalid"}), 401
+            # on success
+            return redirect("/dashboard")
+
 
         @self.app.route('/android-chrome-192x192.png')
         @self.app.route('/android-chrome-512x512.png')

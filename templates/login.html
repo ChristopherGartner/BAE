@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Index{% endblock %}
+{% block meta %}
+<meta name="description" content="BAE Stuffz"/>
+{% endblock %}
+{% block body %}
+    <div id="main_horizontal">
+        <div id="main_vertical">
+            <div class="login-container">
+                <h2>Login</h2>
+                <form action="/api/v1/login" method="POST">
+                    <label for="username">Username:</label>
+                    <input class="login-input" type="text" id="username" name="username" required>
+
+                    <label for="password">Password:</label>
+                    <input class="login-input" type="password" id="password" name="password" required>
+
+                    <input class="login-button" type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
