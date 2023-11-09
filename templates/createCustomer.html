@@ -60,63 +60,65 @@
           <div class="hc" style="padding: 100px">
               <div class="vc">
                 <div class="benutzer-anlegen-banner"></div>
-                  <input
-                          type="text"
-                          placeholder="E-Mail"
-                          class="benutzer-anlegen-textinput input"
-                          style="margin-bottom: 20px"
-                        />
-                        <input
-                          type="text"
-                          placeholder="PLZ"
-                          class="benutzer-anlegen-textinput01 input"
-                          style="margin-bottom: 20px"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Straße"
-                          class="benutzer-anlegen-textinput02 input"
-                          style="margin-bottom: 20px"
-                        />
-                        <input
+                  <form action="/api/v1/create_customer" method="POST" class="vc" style="align-items: flex-start">
+                      <input
                           type="text"
                           placeholder="Name"
                           class="benutzer-anlegen-textinput03 input"
                           style="margin-bottom: 20px"
-                        />
-                        <input
+                          id="input_name"
+                          name="input_name"
+                          onmouseover="color='#87CEFAFF'"
+                      />
+                      <input
                           type="text"
-                          placeholder="Telefonnummer"
-                          class="benutzer-anlegen-textinput04 input"
+                          placeholder="Straße"
+                          class="benutzer-anlegen-textinput02 input"
                           style="margin-bottom: 20px"
-                        />
-                        <input
+                          id="input_street"
+                          name="input_street"
+                          onmouseover="color='#87CEFAFF'"
+                      />
+                      <input
                           type="text"
                           placeholder="Hausnummer"
                           class="benutzer-anlegen-textinput05 input"
                           style="margin-bottom: 20px"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Land"
-                          class="benutzer-anlegen-textinput06 input"
-                          style="margin-bottom: 20px"
-                        />
-                        <input
+                          id="input_house_number"
+                          name="input_house_number"
+                          onmouseover="color='#87CEFAFF'"
+                      />
+                      <input
                           type="text"
                           placeholder="Stadt"
                           class="benutzer-anlegen-textinput07 input"
                           style="margin-bottom: 20px"
-                        />
-                        <input
+                          id="input_city"
+                          name="input_city"
+                          onmouseover="color='#87CEFAFF'"
+                      />
+                      <input
                           type="text"
-                          placeholder="Ansprechpartner"
-                          class="benutzer-anlegen-textinput08 input"
-                          style="margin-bottom: 40px"
-                        />
-                        <button type="button" class="benutzer-anlegen-button button">
+                          placeholder="PLZ"
+                          class="benutzer-anlegen-textinput01 input"
+                          style="margin-bottom: 20px"
+                          id="input_plz"
+                          name="input_plz"
+                          onmouseover="color='#87CEFAFF'"
+                      />
+                      <input
+                          type="text"
+                          placeholder="Land"
+                          class="benutzer-anlegen-textinput06 input"
+                          style="margin-bottom: 20px"
+                          id="input_country"
+                          name="input_country"
+                          onmouseover="color='#87CEFAFF'"
+                      />
+                      <button type="submit" value="create_customer" class="benutzer-anlegen-button button">
                             Kunde anlegen
-                        </button>
+                      </button>
+                  </form>
               </div>
               <img
                   alt="image"

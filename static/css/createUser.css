@@ -100,6 +100,9 @@
   padding-top: var(--dl-space-space-halfunit);
   padding-bottom: var(--dl-space-space-unit);
 }
+.benutzer-anlegen-textinput01:hover {
+  color: lightskyblue;
+}
 .benutzer-anlegen-button {
   left: 372px;
   color: var(--dl-color-gray-white);
@@ -117,6 +120,9 @@
   padding-top: var(--dl-space-space-unit);
   padding-bottom: var(--dl-space-space-unit);
 }
+.benutzer-anlegen-textinput02:hover {
+  color: lightskyblue;
+}
 .benutzer-anlegen-textinput03 {
   top: 402px;
   left: 354px;
@@ -124,6 +130,9 @@
   text-align: left;
   padding-top: var(--dl-space-space-unit);
   padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput03:hover {
+  color: lightskyblue;
 }
 .benutzer-anlegen-textinput04 {
   top: 691px;
@@ -133,6 +142,9 @@
   padding-top: var(--dl-space-space-unit);
   padding-bottom: var(--dl-space-space-unit);
 }
+.benutzer-anlegen-textinput04:hover {
+  color: lightskyblue;
+}
 .benutzer-anlegen-textinput05 {
   top: 633px;
   left: 354px;
@@ -141,6 +153,9 @@
   padding-top: var(--dl-space-space-unit);
   padding-bottom: var(--dl-space-space-unit);
 }
+.benutzer-anlegen-textinput05:hover {
+  color: lightskyblue;
+}
 .benutzer-anlegen-textinput06 {
   top: 575px;
   left: 354px;
@@ -148,6 +163,9 @@
   text-align: left;
   padding-top: var(--dl-space-space-unit);
   padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput06:hover {
+  color: lightskyblue;
 }
 .benutzer-anlegen-textinput07 {
   top: 186px;
@@ -158,6 +176,9 @@
   padding-bottom: var(--dl-space-space-unit);
   background-color: var(--dl-color-gray-white);
 }
+.benutzer-anlegen-textinput07:hover {
+  color: lightskyblue;
+}
 .benutzer-anlegen-textinput08 {
   top: 518px;
   left: 354px;
@@ -165,6 +186,9 @@
   text-align: left;
   padding-top: var(--dl-space-space-unit);
   padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput08:hover {
+  color: lightskyblue;
 }
 .benutzer-anlegen-textinput09 {
   top: 240px;
@@ -174,6 +198,9 @@
   padding-top: var(--dl-space-space-halfunit);
   padding-bottom: var(--dl-space-space-unit);
 }
+.benutzer-anlegen-textinput09:hover {
+  color: lightskyblue;
+}
 .benutzer-anlegen-textinput10 {
   top: 749px;
   left: 354px;
@@ -182,6 +209,9 @@
   padding-top: var(--dl-space-space-unit);
   padding-bottom: var(--dl-space-space-unit);
 }
+.benutzer-anlegen-textinput10:hover {
+  color: lightskyblue;
+}
 .benutzer-anlegen-textinput11 {
   top: 294px;
   left: 354px;
@@ -189,6 +219,9 @@
   text-align: left;
   padding-top: var(--dl-space-space-halfunit);
   padding-bottom: var(--dl-space-space-halfunit);
+}
+.benutzer-anlegen-textinput11:hover {
+  color: lightskyblue;
 }
 .benutzer-anlegen-text {
   top: 107px;

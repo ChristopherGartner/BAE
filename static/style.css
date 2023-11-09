@@ -25,6 +25,14 @@ html, body {
     align-items: center;
 }
 
+.hoverInput {
+
+}
+
+.hoverInput:hover {
+    color: lightskyblue;
+}
+
 .hidden {
     display: none !important;
 }

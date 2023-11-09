@@ -29,6 +29,9 @@
   .navigation-links6-text {
     margin-bottom: var(--dl-space-space-unit);
   }
+  .navigation-links6-text:hover {
+    color: deepskyblue;
+  }
   .navigation-links6-text1 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);

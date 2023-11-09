@@ -182,6 +182,22 @@ class BAE:
 
             return redirect("/create_project")
 
+        @self.app.route('/api/v1/create_customer', methods=['POST'])
+        def api_create_customer():
+            input_name = request.form['input_name']
+            input_street = request.form['input_street']
+            input_house_number = request.form['input_house_number']
+            input_city = request.form['input_city']
+            input_plz = request.form['input_plz']
+            input_country = request.form['input_country']
+
+            self.db.execute(
+                "INSERT INTO customer(idaddress, name) VALUES "
+                + "(2, '" + input_name + "');",
+                commit=True)
+
+            return redirect("/create_customer")
+
 
         @self.app.route('/android-chrome-192x192.png')
         @self.app.route('/android-chrome-512x512.png')

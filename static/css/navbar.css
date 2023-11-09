@@ -13,6 +13,33 @@
 .navigation-links6-text3 {
   margin-left: 32px;
 }
+.navigation-links6-text-logout {
+  margin-left: 32px;
+}
+.navigation-links6-text1:hover {
+  color: deepskyblue;
+}
+.navigation-links6-text2:hover {
+  color: deepskyblue;
+}
+.navigation-links6-text3:hover {
+  color: deepskyblue;
+}
+.navigation-links6-text-logout:hover {
+  color: red;
+}
+.navigation-links6-text3:active{
+  color: purple;
+}
+.navigation-links6-text2:active{
+  color: purple;
+}
+.navigation-links6-text1:active{
+  color: purple;
+}
+.navigation-links6-text-logout:hover {
+  color: darkred;
+}
 
 
 
@@ -28,6 +55,9 @@
   }
   .navigation-links6-text {
     margin-bottom: var(--dl-space-space-unit);
+  }
+  .navigation-links6-text:hover {
+    color: deepskyblue;
   }
   .navigation-links6-text1 {
     margin-left: 0;
