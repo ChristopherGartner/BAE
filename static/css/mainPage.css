@@ -1,0 +1,215 @@
+.navigation-links6-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.navigation-links6-text1 {
+  margin-left: 32px;
+}
+.navigation-links6-text2 {
+  margin-left: 32px;
+}
+.navigation-links6-text3 {
+  margin-left: 32px;
+}
+
+
+
+
+
+
+
+
+@media(max-width: 767px) {
+  .navigation-links6-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .navigation-links6-text {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .navigation-links6-text1 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .navigation-links6-text2 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .navigation-links6-text3 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}
+
+.mitarbeiterbersicht-projekte-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.mitarbeiterbersicht-projekte-header {
+  width: 100%;
+  display: flex;
+  max-width: 1400px;
+  align-items: center;
+  padding-top: 32px;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-bottom: 32px;
+  justify-content: flex-end;
+}
+.mitarbeiterbersicht-projekte-nav {
+  display: flex;
+}
+.mitarbeiterbersicht-projekte-testimonial-card {
+  top: 171px;
+  left: 61px;
+  width: 1503px;
+  height: 161px;
+  display: flex;
+  position: absolute;
+  max-width: 1400px;
+  align-self: stretch;
+  background: #fff;
+  box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.1);
+  align-items: center;
+  padding-top: 32px;
+  padding-left: 32px;
+  flex-direction: column;
+  padding-bottom: 32px;
+  justify-content: center;
+  background-color: var(--dl-color-gray-white);
+}
+.mitarbeiterbersicht-projekte-profile {
+  left: 35px;
+  width: 868px;
+  bottom: 5px;
+  height: 153px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  padding-top: var(--dl-space-space-unit);
+  border-color: var(--dl-color-gray-900);
+  border-width: 1px;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+}
+.mitarbeiterbersicht-projekte-image {
+  width: 96px;
+  filter: grayscale();
+  height: 96px;
+  object-fit: cover;
+  border-radius: var(--dl-radius-radius-round);
+}
+.mitarbeiterbersicht-projekte-container1 {
+  width: 224px;
+  height: 96px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: var(--dl-space-space-unit);
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mitarbeiterbersicht-projekte-text {
+  font-size: 24px;
+  font-style: normal;
+  font-family: "Georgia";
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.mitarbeiterbersicht-projekte-text1 {
+  font-size: 24px;
+  font-style: normal;
+  font-family: "Georgia";
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+.mitarbeiterbersicht-projekte-text2 {
+  color: var(--dl-color-gray-black);
+  font-size: 14px;
+  font-style: normal;
+  font-family: "Georgia";
+  font-weight: 400;
+}
+.mitarbeiterbersicht-projekte-text3 {
+  top: 435px;
+  left: 416px;
+  position: absolute;
+  font-family: "Georgia";
+  text-transform: uppercase;
+}
+.mitarbeiterbersicht-projekte-text4 {
+  top: 557px;
+  left: 380px;
+  position: absolute;
+}
+.mitarbeiterbersicht-projekte-text5 {
+  top: 603px;
+  left: 380px;
+  position: absolute;
+}
+.mitarbeiterbersicht-projekte-text6 {
+  top: 655px;
+  left: 381px;
+  position: absolute;
+}
+.mitarbeiterbersicht-projekte-banner {
+  width: 1493px;
+  height: 845px;
+  display: flex;
+  padding: 48px;
+  align-items: center;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media(max-width: 991px) {
+  .mitarbeiterbersicht-projekte-profile {
+    padding-left: var(--dl-space-space-halfunit);
+    padding-right: var(--dl-space-space-halfunit);
+  }
+  .mitarbeiterbersicht-projekte-image {
+    margin-left: 0px;
+  }
+}
+@media(max-width: 767px) {
+  .mitarbeiterbersicht-projekte-header {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .mitarbeiterbersicht-projekte-nav {
+    display: none;
+  }
+  .mitarbeiterbersicht-projekte-banner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media(max-width: 479px) {
+  .mitarbeiterbersicht-projekte-header {
+    padding: var(--dl-space-space-unit);
+  }
+  .mitarbeiterbersicht-projekte-testimonial-card {
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+  }
+  .mitarbeiterbersicht-projekte-profile {
+    justify-content: center;
+  }
+  .mitarbeiterbersicht-projekte-banner {
+    padding-top: 32px;
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: 32px;
+  }
+}

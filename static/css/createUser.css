@@ -1,0 +1,236 @@
+.navigation-links7-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.navigation-links7-text1 {
+  margin-left: 32px;
+}
+.navigation-links7-text2 {
+  margin-left: 32px;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width: 767px) {
+  .navigation-links7-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .navigation-links7-text {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .navigation-links7-text1 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .navigation-links7-text2 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}
+
+.benutzer-anlegen-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.benutzer-anlegen-header {
+  width: 100%;
+  display: flex;
+  max-width: 1400px;
+  align-items: center;
+  padding-top: 32px;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-bottom: 32px;
+  justify-content: flex-end;
+}
+.benutzer-anlegen-nav {
+  display: flex;
+}
+.benutzer-anlegen-image {
+  top: 240px;
+  left: 845px;
+  width: 607px;
+  height: 539px;
+  position: absolute;
+  object-fit: cover;
+}
+.benutzer-anlegen-flex-side {
+  display: flex;
+  flex-direction: row;
+}
+.benutzer-anlegen-flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+.benutzer-anlegen-textarea {
+  top: 749px;
+  left: 354px;
+  bottom: 141px;
+  position: absolute;
+}
+.benutzer-anlegen-textinput {
+  top: 344px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput01 {
+  top: 186px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-button {
+  left: 372px;
+  color: var(--dl-color-gray-white);
+  bottom: 77px;
+  position: absolute;
+  font-family: "Noto Sans";
+  text-transform: uppercase;
+  background-color: rgb(0, 0, 0);
+}
+.benutzer-anlegen-textinput02 {
+  top: 460px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput03 {
+  top: 402px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput04 {
+  top: 691px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput05 {
+  top: 633px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput06 {
+  top: 575px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput07 {
+  top: 186px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-bottom: var(--dl-space-space-unit);
+  background-color: var(--dl-color-gray-white);
+}
+.benutzer-anlegen-textinput08 {
+  top: 518px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput09 {
+  top: 240px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput10 {
+  top: 749px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-unit);
+  padding-bottom: var(--dl-space-space-unit);
+}
+.benutzer-anlegen-textinput11 {
+  top: 294px;
+  left: 354px;
+  position: absolute;
+  text-align: left;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.benutzer-anlegen-text {
+  top: 107px;
+  left: 275px;
+  color: var(--dl-color-gray-black);
+  position: absolute;
+  font-family: "Georgia";
+  text-transform: uppercase;
+}
+.benutzer-anlegen-banner {
+  width: 1526px;
+  height: 856px;
+  display: flex;
+  padding: 48px;
+  align-items: center;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media(max-width: 767px) {
+  .benutzer-anlegen-header {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .benutzer-anlegen-nav {
+    display: none;
+  }
+  .benutzer-anlegen-banner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media(max-width: 479px) {
+  .benutzer-anlegen-header {
+    padding: var(--dl-space-space-unit);
+  }
+  .benutzer-anlegen-banner {
+    padding-top: 32px;
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: 32px;
+  }
+}

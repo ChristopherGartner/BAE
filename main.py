@@ -101,6 +101,18 @@ class BAE:
                 return redirect("/login")
             return render_template("dashboard.html")
 
+        @self.app.route('/main_page', methods=['GET'])
+        def mainPage():
+            if not self.sessions.validate(request.cookies.get('token', default='')):
+                return redirect("/login")
+            return render_template("mainPage.html")
+
+        @self.app.route('/create_user', methods=['GET'])
+        def createUser():
+            if not self.sessions.validate(request.cookies.get('token', default='')):
+                return redirect("/login")
+            return render_template("createUserPage.html")
+
         @self.app.route('/project/<project_id>')
         def project(project_id):
             if not self.sessions.validate(request.cookies.get('token', default=''), role_required="EMPLOYEE", project=project_id):
