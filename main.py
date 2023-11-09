@@ -113,6 +113,18 @@ class BAE:
                 return redirect("/login")
             return render_template("createUserPage.html")
 
+        @self.app.route('/create_customer', methods=['GET'])
+        def createCustomer():
+            if not self.sessions.validate(request.cookies.get('token', default='')):
+                return redirect("/login")
+            return render_template("createCustomer.html")
+
+        @self.app.route('/create_project', methods=['GET'])
+        def createProject():
+            if not self.sessions.validate(request.cookies.get('token', default='')):
+                return redirect("/login")
+            return render_template("createProject.html")
+
         @self.app.route('/project/<project_id>')
         def project(project_id):
             if not self.sessions.validate(request.cookies.get('token', default=''), role_required="EMPLOYEE", project=project_id):
@@ -134,6 +146,10 @@ class BAE:
                 return jsonify({"error": "username & password combination invalid"}), 401
             # on success
             return redirect("/dashboard")
+
+        @self.app.route('/api/v1/create_user', methods=['POST'])
+        def api_create_user():
+            return redirect("/create_user")
 
 
         @self.app.route('/android-chrome-192x192.png')
