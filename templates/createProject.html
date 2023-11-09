@@ -59,39 +59,44 @@
           <h1 class="benutzer-anlegen-text" style="margin-left: 90px">Projekterfassung</h1>
           <div class="hc" style="padding: 100px">
               <div class="vc">
-                <div class="benutzer-anlegen-banner"></div>
-                  <input
-                          type="text"
-                          placeholder="Projektname"
-                          class="benutzer-anlegen-textinput input"
-                          style="margin-bottom: 20px"
-                        />
+                <div class="benutzer-anlegen-banner vc"></div>
+                  <form action="/api/v1/create_project" method="POST" class="vc" style="align-items: flex-start">
                         <input
-                          type="text"
+                          type="date"
                           placeholder="Projektbeginn"
                           class="benutzer-anlegen-textinput01 input"
                           style="margin-bottom: 20px"
+                          id="input_project_begin"
+                          name="input_project_begin"
                         />
                         <input
-                          type="text"
+                          type="date"
                           placeholder="Projektende"
                           class="benutzer-anlegen-textinput02 input"
                           style="margin-bottom: 20px"
+                          id="input_project_end"
+                          name="input_project_end"
                         />
                         <input
                           type="text"
                           placeholder="Budget"
                           class="benutzer-anlegen-textinput03 input"
                           style="margin-bottom: 20px"
+                          id="input_budget"
+                          name="input_budget"
                         />
-                        <textarea
-                          placeholder="Projektbeschreibung"
-                          class="benutzer-anlegen-textarea textarea"
-                          style="margin-bottom: 40px"
-                        ></textarea>
-                        <button type="button" class="benutzer-anlegen-button button">
+                        <input
+                          type="text"
+                          placeholder="Priorität"
+                          class="benutzer-anlegen-textinput03 input"
+                          style="margin-bottom: 20px"
+                          id="input_priority"
+                          name="input_priority"
+                        />
+                        <button type="submit" value="create_project" class="benutzer-anlegen-button button">
                             Projekt anlegen
                         </button>
+                  </form>
               </div>
               <img
                   alt="image"

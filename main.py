@@ -171,8 +171,22 @@ class BAE:
             self.db.execute("INSERT INTO employee(firstName, lastName, gender, position, saleryPerHour, titel, birthDate, informations, idaddress, password, Username, idrole) VALUES "
                             + "('" + input_first_name + "','"+ input_last_name + "','"+ input_gender + "','"+ input_job_position + "',"+ input_salery_per_hour + ",'"+ input_title + "','"+ input_birth_date + "','"+ input_informations + "<',4,'" + input_password  + "','"+ input_username  + "', 3);", commit=True)
 
-
             return redirect("/create_user")
+
+
+        @self.app.route('/api/v1/create_project', methods=['POST'])
+        def api_create_project():
+            input_project_begin = request.form['input_project_begin']
+            input_project_end = request.form['input_project_end']
+            input_budget = request.form['input_budget']
+            input_priority = request.form['input_priority']
+
+            self.db.execute(
+                "INSERT INTO project(idcustomer, startDate, plannedEndingDate, idaddress, priority, budget) VALUES "
+                + "(2, '" + input_project_begin + "','" + input_project_end + "',3,'" + input_priority + "'," + input_budget + ");",
+                commit=True)
+
+            return redirect("/create_project")
 
 
         @self.app.route('/android-chrome-192x192.png')
