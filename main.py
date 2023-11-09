@@ -95,12 +95,6 @@ class BAE:
             return render_template("login.html")
 
         # Protected routes
-        @self.app.route('/dashboard', methods=['GET'])
-        def dashboard():
-            if not self.sessions.validate(request.cookies.get('token', default='')):
-                return redirect("/login")
-            return render_template("dashboard.html")
-
         @self.app.route('/main_page', methods=['GET'])
         def mainPage():
             if not self.sessions.validate(request.cookies.get('token', default='')):
@@ -204,7 +198,7 @@ class BAE:
             return send_from_directory(self.app.static_folder, request.path[1:])
 
         if __name__ == '__main__':
-            self.app.run(host='0.0.0.0', port=5000)
+            self.app.run(host='0.0.0.0', port=17500)
         else:
             return self.app
 

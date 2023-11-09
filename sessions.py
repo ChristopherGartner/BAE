@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 
 # Force validation disables login validation for sessions
-force_validation = True
+force_validation = False
 
 
 class Sessions:

@@ -64,7 +64,7 @@
               <span class="home-text1">Your digital working area</span>
               <br />
             </span>
-            <button class="home-cta-btn button" onclick="window.location.href='{{ url_for('login') }}'">LOGIN</button>
+            <button id="loginButton" class="home-cta-btn button" onclick="window.location.href='{{ url_for('login') }}'">LOGIN</button>
           </div>
           <img
             alt="image"
@@ -75,4 +75,12 @@
       </div>
     </div>
     <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script defer>
+        btn = document.getElementById("loginButton");
+        if($.cookie('token') !== undefined && !($.cookie('token') === 'null')){
+            btn.onclick = function() {  window.location.href = '{{ url_for('mainPage') }}'  };
+            btn.textContent = "Dashboard"
+        }
+
+    </script>
 {% endblock %}
