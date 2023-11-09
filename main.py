@@ -128,12 +128,14 @@ class BAE:
             username = request.form['username']
             password = request.form['password']
 
-            print(f"Received username: {username}, password: {password}")
-            token = self.sessions.validate(username, password)
+
+            token = self.sessions.register(username, password)
             if token is None:
                 return jsonify({"error": "username & password combination invalid"}), 401
             # on success
-            return redirect("/dashboard")
+            resp = redirect("/dashboard")
+            resp.set_cookie("token", token)
+            return resp
 
 
         @self.app.route('/android-chrome-192x192.png')

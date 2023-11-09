@@ -12,19 +12,19 @@ class Sessions:
         self.db = db
         self.VALID_UNTIL_HOURS = 1
         self._sessions = list()
-        self.ROLES = {'SYSADMIN': 1000, 'CEO': 100, 'EMPLOYEE': 10}
+        self.ROLES = {'SYSADMIN': 1000, 'CEO': 100, 'EMPLOYEE': 10} #TODO fetch this from DB
         self.ALL_PROJECTS_THRESHOLD = 99  # above this all roles can see all projects
 
-    def validate(self, token, role=None, role_required=None, project=None):
+    def validate(self, token, role_required=None, project=None):
         if force_validation:
             return True
 
         for s in self._sessions:
             if s.token == token:
                 if s.valid_until > datetime.now():
-                    if role in self.ROLES and role_required in self.ROLES:  # No role assumes no role permissions needed
-                        if self.ROLES[role] >= self.ROLES[role_required]:
-                            if project is None or self.ROLES[role] > self.ALL_PROJECTS_THRESHOLD:
+                    if s.role in self.ROLES and role_required in self.ROLES:  # No role assumes no role permissions needed
+                        if self.ROLES[s.role] >= self.ROLES[role_required]:
+                            if project is None or self.ROLES[s.role] > self.ALL_PROJECTS_THRESHOLD:
                                 # no project given or above threshold allows request
                                 return True
                             else:
@@ -39,8 +39,17 @@ class Sessions:
 
     def register(self, user, password):
         # TODO check PW in DB or against cached list, get role and get allowed projects, if pw wrong return None
+
+        res = self.db.execute("SELECT employee.idemployee, name FROM employee INNER JOIN role ON employee.idrole = role.roleId WHERE Username = %s AND password = %s;", (user, password))
+        if len(res) == 0:
+            return None
+        data = [list(d) for d in res]
+        role = data[0][1]
+        res = self.db.execute("SELECT idproject FROM projectEmployee WHERE projectEmployee.idemployee = %s;", (data[0][0], ))
+        data = [list(d) for d in res]
         projects = []
-        role = "TEST"
+        for r in data:
+            projects.append(r[0])
         token = str(uuid.uuid4())
         issued_on = datetime.now()
         valid_until = issued_on + timedelta(hours=self.VALID_UNTIL_HOURS)
