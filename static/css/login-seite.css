@@ -1,0 +1,279 @@
+.login-seite-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.login-seite-container1 {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  box-shadow: 5px 5px 10px 0px #d4d4d4;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: var(--dl-radius-radius-radius4);
+}
+.login-seite-navbar-interactive {
+  color: #f7f7f7;
+  width: 100%;
+  height: 103px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  padding-top: 32px;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-bottom: var(--dl-space-space-halfunit);
+  justify-content: center;
+  background-color: var(--dl-color-gray-white);
+}
+.login-seite-desktop-menu {
+  flex: 1;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.login-seite-links {
+  flex: 1;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: var(--dl-color-gray-white);
+}
+.login-seite-home {
+  color: rgb(16, 12, 12);
+  text-align: center;
+  margin-left: 32px;
+  border-radius: var(--dl-radius-radius-radius4);
+}
+.login-seite-burger-menu {
+  display: none;
+}
+.login-seite-icon {
+  width: 16px;
+  height: 16px;
+}
+.login-seite-mobile-menu {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  padding: 32px;
+  z-index: 100;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.login-seite-nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.login-seite-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 48px;
+  justify-content: space-between;
+}
+.login-seite-logo {
+  height: 2rem;
+}
+.login-seite-close-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-seite-icon02 {
+  width: 16px;
+  height: 16px;
+}
+.login-seite-links1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.login-seite-text {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.login-seite-text1 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.login-seite-text2 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.login-seite-text3 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.login-seite-text4 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.login-seite-buttons {
+  display: flex;
+  margin-top: var(--dl-space-space-unit);
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.login-seite-login {
+  margin-right: 32px;
+}
+.login-seite-icon04 {
+  width: 16px;
+  height: 16px;
+  margin-right: 32px;
+}
+.login-seite-icon06 {
+  width: 16px;
+  height: 16px;
+  margin-right: 32px;
+}
+.login-seite-icon08 {
+  width: 16px;
+  height: 16px;
+}
+.login-seite-image {
+  top: 363px;
+  left: 879px;
+  width: 477px;
+  height: 412px;
+  position: absolute;
+  object-fit: cover;
+}
+.login-seite-banner {
+  top: 180px;
+  left: 116px;
+  width: 1359px;
+  height: 679px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-fourunits);
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  padding-left: 48px;
+  padding-right: 48px;
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-fourunits);
+  justify-content: center;
+  background-color: var(--dl-color-gray-white);
+}
+.login-seite-container2 {
+  gap: var(--dl-space-space-halfunit);
+  color: var(--dl-color-gray-black);
+  width: 523px;
+  height: 361px;
+  display: flex;
+  box-shadow: 5px 5px 10px 0px #fffefe;
+  align-items: center;
+  padding-top: var(--dl-space-space-unit);
+  border-radius: var(--dl-radius-radius-radius4);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+  text-transform: uppercase;
+  justify-content: center;
+}
+.login-seite-textinput {
+  font-size: 0.75rem;
+  margin-top: var(--dl-space-space-doubleunit);
+  margin-left: var(--dl-space-space-doubleunit);
+  border-color: var(--dl-color-gray-500);
+  margin-right: var(--dl-space-space-doubleunit);
+  margin-bottom: var(--dl-space-space-doubleunit);
+}
+.login-seite-input {
+  font-size: 0.75rem;
+  border-color: var(--dl-color-gray-500);
+}
+.login-seite-button {
+  color: var(--dl-color-gray-white);
+  margin: var(--dl-space-space-unit);
+  font-size: 0.75rem;
+  font-style: normal;
+  transition: 0.3s;
+  font-family: "Noto Sans";
+  font-weight: 700;
+  background-color: var(--dl-color-gray-black);
+}
+.login-seite-button:hover {
+  color: var(--dl-color-gray-black);
+  background-color: transparent;
+}
+.login-seite-image1 {
+  top: 113px;
+  left: 692px;
+  width: 496px;
+  height: 442px;
+  position: absolute;
+  object-fit: cover;
+}
+@media(max-width: 767px) {
+  .login-seite-navbar-interactive {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .login-seite-desktop-menu {
+    display: none;
+  }
+  .login-seite-burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-seite-text {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .login-seite-text1 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .login-seite-text2 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .login-seite-text3 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .login-seite-text4 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .login-seite-banner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media(max-width: 479px) {
+  .login-seite-navbar-interactive {
+    padding: var(--dl-space-space-unit);
+  }
+  .login-seite-mobile-menu {
+    padding: 16px;
+  }
+  .login-seite-banner {
+    padding-top: 48px;
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: 48px;
+  }
+  .login-seite-container2 {
+    align-items: center;
+    flex-direction: column;
+  }
+  .login-seite-button {
+    margin-top: var(--dl-space-space-unit);
+    margin-left: 0px;
+  }
+}
