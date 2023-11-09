@@ -60,86 +60,138 @@
           <div class="hc" style="padding: 100px">
               <div class="vc">
                 <div class="benutzer-anlegen-banner"></div>
-                  <input
+                  <form action="/api/v1/create_user" method="POST">
+                        <input
                           type="text"
-                          placeholder="Straße,  Hausnummer"
+                          placeholder="Straße"
                           class="benutzer-anlegen-textinput input"
                           style="margin-bottom: 20px"
+                          id="input_street"
+                          name="input_street"
                         />
                         <input
                           type="text"
-                          placeholder="Titel"
-                          class="benutzer-anlegen-textinput01 input"
+                          placeholder="Hausnummer"
+                          class="benutzer-anlegen-textinput input"
                           style="margin-bottom: 20px"
+                          id="input_house_number"
+                          name="input_house_number"
                         />
                         <input
                           type="text"
                           placeholder="Stadt"
                           class="benutzer-anlegen-textinput02 input"
                           style="margin-bottom: 20px"
+                          id="input_city"
+                          name="input_city"
                         />
                         <input
                           type="text"
                           placeholder="PLZ"
                           class="benutzer-anlegen-textinput03 input"
                           style="margin-bottom: 20px"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Berufsposition"
-                          class="benutzer-anlegen-textinput04 input"
-                          style="margin-bottom: 20px"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Geschlecht"
-                          class="benutzer-anlegen-textinput05 input"
-                          style="margin-bottom: 20px"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Geburtsdatum"
-                          class="benutzer-anlegen-textinput06 input"
-                          style="margin-bottom: 20px"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Benutzer ID"
-                          class="benutzer-anlegen-textinput07 input"
-                          style="margin-bottom: 20px"
+                          id="input_PLZ"
+                          name="input_PLZ"
                         />
                         <input
                           type="text"
                           placeholder="Land"
                           class="benutzer-anlegen-textinput08 input"
                           style="margin-bottom: 20px"
+                          id="input_country"
+                          name="input_country"
                         />
                         <input
                           type="text"
-                          placeholder="Name"
+                          placeholder="Titel"
+                          class="benutzer-anlegen-textinput01 input"
+                          style="margin-bottom: 20px"
+                          id="input_title"
+                          name="input_title"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Berufsposition"
+                          class="benutzer-anlegen-textinput04 input"
+                          style="margin-bottom: 20px"
+                          id="input_job_position"
+                          name="input_job_position"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Geschlecht"
+                          class="benutzer-anlegen-textinput05 input"
+                          style="margin-bottom: 20px"
+                          id="input_gender"
+                          name="input_gender"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Geburtsdatum"
+                          class="benutzer-anlegen-textinput06 input"
+                          style="margin-bottom: 20px"
+                          id="input_birth_date"
+                          name="input_birth_date"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Vorname"
                           class="benutzer-anlegen-textinput09 input"
                           style="margin-bottom: 20px"
+                          id="input_first_name"
+                          name="input_first_name"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Nachname"
+                          class="benutzer-anlegen-textinput09 input"
+                          style="margin-bottom: 20px"
+                          id="input_last_name"
+                          name="input_last_name"
                         />
                         <input
                           type="text"
                           placeholder="Gehalt/Std."
                           class="benutzer-anlegen-textinput10 input"
                           style="margin-bottom: 20px"
+                          id="input_salery_per_hour"
+                          name="input_salery_per_hour"
                         />
-                        <input
+                      <input
                           type="text"
-                          placeholder="Vorname"
-                          class="benutzer-anlegen-textinput11 input"
+                          placeholder="Rolle"
+                          class="benutzer-anlegen-textinput10 input"
                           style="margin-bottom: 20px"
+                          id="input_role"
+                          name="input_role"
+                        />
+                      <input
+                          type="text"
+                          placeholder="Nutzername"
+                          class="benutzer-anlegen-textinput10 input"
+                          style="margin-bottom: 20px"
+                          id="input_username"
+                          name="input_username"
+                        />
+                      <input
+                          type="password"
+                          placeholder="Passwort"
+                          class="benutzer-anlegen-textinput10 input"
+                          style="margin-bottom: 20px"
+                          id="input_password"
+                          name="input_password"
                         />
                         <textarea
                           placeholder="Zusätzliche Informationen"
                           class="benutzer-anlegen-textarea textarea"
                           style="margin-bottom: 40px"
+                          id="input_informations"
+                          name="input_informations"
                         ></textarea>
-                        <button type="button" class="benutzer-anlegen-button button">
+                        <button type="submit" value="create_user" class="benutzer-anlegen-button button">
                             Benutzer anlegen
                         </button>
+                  </form>
               </div>
               <img
                   alt="image"

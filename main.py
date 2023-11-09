@@ -151,6 +151,27 @@ class BAE:
 
         @self.app.route('/api/v1/create_user', methods=['POST'])
         def api_create_user():
+            input_street = request.form['input_street']
+            input_house_number = request.form['input_house_number']
+            input_city = request.form['input_city']
+            input_PLZ = request.form['input_PLZ']
+            input_country = request.form['input_country']
+            input_title = request.form['input_title']
+            input_job_position = request.form['input_job_position']
+            input_gender = request.form['input_gender']
+            input_birth_date = request.form['input_birth_date']
+            input_first_name = request.form['input_first_name']
+            input_last_name = request.form['input_last_name']
+            input_salery_per_hour = request.form['input_salery_per_hour']
+            input_role = request.form['input_role']
+            input_informations = request.form['input_informations']
+            input_password = request.form['input_password']
+            input_username = request.form['input_username']
+
+            self.db.execute("INSERT INTO employee(firstName, lastName, gender, position, saleryPerHour, titel, birthDate, informations, idaddress, password, Username, idrole) VALUES "
+                            + "('" + input_first_name + "','"+ input_last_name + "','"+ input_gender + "','"+ input_job_position + "',"+ input_salery_per_hour + ",'"+ input_title + "','"+ input_birth_date + "','"+ input_informations + "<',4,'" + input_password  + "','"+ input_username  + "', 3);", commit=True)
+
+
             return redirect("/create_user")
 
 
