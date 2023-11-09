@@ -145,7 +145,7 @@ class BAE:
             if token is None:
                 return jsonify({"error": "username & password combination invalid"}), 401
             # on success
-            resp = redirect("/dashboard")
+            resp = make_response(jsonify({"success": "Login successful"}), 200)
             resp.set_cookie("token", token)
             return resp
 

@@ -12,9 +12,7 @@ function setup_login_form(){
             method: 'POST',
             dataType : 'json',
             success : function (data) {
-                if (data.redirect) {
-                    window.location.href = data.redirect;
-                }
+                window.location.href = "/dashboard"
             },
             error : function (data) {
                 document.getElementById("login_error").classList.remove("hidden")

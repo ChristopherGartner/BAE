@@ -36,6 +36,7 @@
   border-width: 1px;
   border-radius: 4px;
   background-color: var(--dl-color-gray-white);
+  cursor: pointer;
 }
 .list {
   width: 100%;
