@@ -132,7 +132,7 @@
         />
         <div class="login-seite-banner">
           <div class="login-seite-container2">
-              <form action="/api/v1/login" method="POST">
+              <form id="loginForm">
                 <input
                   type="text"
                   id="username"
@@ -157,6 +157,7 @@
                 >
                   LOGIN
                 </button>
+                <label id="login_error" style="color: red;" class="hidden">Wrong username or password</label>
               </form>
           </div>
           <img
@@ -168,4 +169,8 @@
       </div>
     </div>
     <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script defer>
+        setup_login_form();
+
+    </script>
 {% endblock %}
