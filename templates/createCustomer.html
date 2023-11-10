@@ -48,9 +48,29 @@
       scroll-behavior: smooth;
       }
     </style>
+    <script>
+        function showOrHideErrorField() {
+            let params = new URLSearchParams(window.location.search);
+
+            let hasErrorOccurred = params.get("error");
+            let errorMessage = params.get("error_message");
+
+            var errorLabel = document.getElementById("error_label");
+
+            if(hasErrorOccurred == "1") {
+                errorLabel.style.display = "block";
+                errorLabel.textContent = errorMessage;
+            } else {
+                errorLabel.style.display = "none";
+            }
+        }
+    </script>
 {% endblock %}
 {% block body %}
     {{ super() }}
+    <script>
+        window.onload = showOrHideErrorField;
+    </script>
     <link rel="stylesheet" href="./style.css" />
     <div>
       <link href="./benutzer-anlegen.css" rel="stylesheet" />
@@ -59,11 +79,12 @@
           <h1 class="benutzer-anlegen-text" style="margin-left: 90px">Kundenerfassung</h1>
           <div class="hc" style="padding: 100px">
               <div class="vc">
-                <div class="benutzer-anlegen-banner"></div>
+                <div class="benutzer-anlegen-banner vc"></div>
+                  <label id="error_label" style="color: red; margin-bottom: 30px"></label>
                   <form action="/api/v1/create_customer" method="POST" class="vc" style="align-items: flex-start">
                       <input
                           type="text"
-                          placeholder="Name"
+                          placeholder="Name*"
                           class="benutzer-anlegen-textinput03 input"
                           style="margin-bottom: 20px"
                           id="input_name"
@@ -72,7 +93,7 @@
                       />
                       <input
                           type="text"
-                          placeholder="Straße"
+                          placeholder="Straße*"
                           class="benutzer-anlegen-textinput02 input"
                           style="margin-bottom: 20px"
                           id="input_street"
@@ -81,7 +102,7 @@
                       />
                       <input
                           type="text"
-                          placeholder="Hausnummer"
+                          placeholder="Hausnummer*"
                           class="benutzer-anlegen-textinput05 input"
                           style="margin-bottom: 20px"
                           id="input_house_number"
@@ -90,7 +111,7 @@
                       />
                       <input
                           type="text"
-                          placeholder="Stadt"
+                          placeholder="Stadt*"
                           class="benutzer-anlegen-textinput07 input"
                           style="margin-bottom: 20px"
                           id="input_city"
@@ -99,7 +120,7 @@
                       />
                       <input
                           type="text"
-                          placeholder="PLZ"
+                          placeholder="PLZ*"
                           class="benutzer-anlegen-textinput01 input"
                           style="margin-bottom: 20px"
                           id="input_plz"
@@ -108,7 +129,7 @@
                       />
                       <input
                           type="text"
-                          placeholder="Land"
+                          placeholder="Land*"
                           class="benutzer-anlegen-textinput06 input"
                           style="margin-bottom: 20px"
                           id="input_country"

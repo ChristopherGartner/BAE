@@ -205,7 +205,7 @@ class BAE:
                     error_text = "'" + input_salery_per_hour + "' ist kein numerischer Wert! Bitte gebe im 'Bezahlung-pro-Stundefeld' einen numerischen Wert an!"
 
 
-            if error_text is not None:
+            if error_occurred:
                 return redirect("/create_user?error=1&error_message=" + error_text)
 
             self.db.execute("INSERT INTO employee(firstName, lastName, gender, position, saleryPerHour, titel, birthDate, informations, idaddress, password, Username, idrole) VALUES "
@@ -236,6 +236,28 @@ class BAE:
             input_city = request.form['input_city']
             input_plz = request.form['input_plz']
             input_country = request.form['input_country']
+
+            error_text = None
+            error_occurred = False
+
+            if input_name == "":
+                error_text = "Das Namensfeld wurde nicht ausgefüllt!"
+            elif input_street == "":
+                error_text = "Das Straßenfeld wurde nicht ausgefüllt!"
+            elif input_house_number == "":
+                error_text = "Das Hausnummer wurde nicht ausgefüllt!"
+            elif input_city == "":
+                error_text = "Das Stadtfeld wurde nicht ausgefüllt!"
+            elif input_plz == "":
+                error_text = "Das PLZ-Feld wurde nicht ausgefüllt!"
+            elif input_country == "":
+                error_text = "Das Landfeld wurde nicht ausgefüllt!"
+
+            if error_text is not None:
+                error_occurred = True
+
+            if error_occurred:
+                return redirect("/create_customer?error=1&error_message=" + error_text)
 
             self.db.execute(
                 "INSERT INTO customer(idaddress, name) VALUES "
