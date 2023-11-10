@@ -221,6 +221,24 @@ class BAE:
             input_budget = request.form['input_budget']
             input_priority = request.form['input_priority']
 
+            error_text = None
+            error_occurred = False
+
+            if input_project_begin == "":
+                error_text = "Das Projektbeginnfeld wurde nicht ausgefüllt!"
+            elif input_project_end == "":
+                error_text = "Das voraussichtliches Projektendefeld wurde nicht ausgefüllt!"
+            elif input_budget == "":
+                error_text = "Das Budgetfeld wurde nicht ausgefüllt!"
+            elif input_priority == "":
+                error_text = "Das Projektprioritätfeld wurde nicht ausgefüllt!"
+
+            if (error_text is not None):
+                error_occurred = True
+
+            if error_occurred:
+                return redirect("/create_project?error=1&error_message=" + error_text)
+
             self.db.execute(
                 "INSERT INTO project(idcustomer, startDate, plannedEndingDate, idaddress, priority, budget) VALUES "
                 + "(2, '" + input_project_begin + "','" + input_project_end + "',3,'" + input_priority + "'," + input_budget + ");",

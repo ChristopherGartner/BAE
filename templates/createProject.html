@@ -48,9 +48,29 @@
       scroll-behavior: smooth;
       }
     </style>
+    <script>
+        function showOrHideErrorField() {
+            let params = new URLSearchParams(window.location.search);
+
+            let hasErrorOccurred = params.get("error");
+            let errorMessage = params.get("error_message");
+
+            var errorLabel = document.getElementById("error_label");
+
+            if(hasErrorOccurred == "1") {
+                errorLabel.style.display = "block";
+                errorLabel.textContent = errorMessage;
+            } else {
+                errorLabel.style.display = "none";
+            }
+        }
+    </script>
 {% endblock %}
 {% block body %}
     {{ super() }}
+    <script>
+        window.onload = showOrHideErrorField;
+    </script>
     <link rel="stylesheet" href="./style.css" />
     <div>
       <link href="./benutzer-anlegen.css" rel="stylesheet" />
@@ -60,10 +80,11 @@
           <div class="hc" style="padding: 100px">
               <div class="vc">
                 <div class="benutzer-anlegen-banner vc"></div>
+                  <label id="error_label" style="color: red; margin-bottom: 30px"></label>
                   <form action="/api/v1/create_project" method="POST" class="vc" style="align-items: flex-start">
                         <input
                           type="date"
-                          placeholder="Projektbeginn"
+                          placeholder="Projektbeginn*"
                           class="benutzer-anlegen-textinput01 input"
                           style="margin-bottom: 20px"
                           id="input_project_begin"
@@ -71,7 +92,7 @@
                         />
                         <input
                           type="date"
-                          placeholder="Projektende"
+                          placeholder="voraussichtl. Projektende*"
                           class="benutzer-anlegen-textinput02 input"
                           style="margin-bottom: 20px"
                           id="input_project_end"
@@ -79,7 +100,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Budget"
+                          placeholder="Budget*"
                           class="benutzer-anlegen-textinput03 input"
                           style="margin-bottom: 20px"
                           id="input_budget"
@@ -87,7 +108,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Priorität"
+                          placeholder="Priorität*"
                           class="benutzer-anlegen-textinput03 input"
                           style="margin-bottom: 20px"
                           id="input_priority"
