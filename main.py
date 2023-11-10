@@ -162,6 +162,52 @@ class BAE:
             input_password = request.form['input_password']
             input_username = request.form['input_username']
 
+            error_text = None
+            error_occurred = False
+
+            if input_street == "":
+                error_text = "Das Straßenfeld wurde nicht ausgefüllt!"
+            elif input_house_number == "":
+                error_text = "Das Hausnummerfeld wurde nicht ausgefüllt!"
+            elif input_city == "":
+                error_text = "Das Stadtfeld wurde nicht ausgefüllt!"
+            elif input_PLZ == "":
+                error_text = "Das PLZ-Feld wurde nicht ausgefüllt!"
+            elif input_country == "":
+                error_text = "Das Landfeld wurde nicht ausgefüllt!"
+            elif input_job_position == "":
+                error_text = "Das Job-Positionsfeld wurde nicht ausgefüllt!"
+            elif input_gender == "":
+                error_text = "Das Geschlechtsfeld wurde nicht ausgefüllt!"
+            elif input_birth_date == "":
+                error_text = "Das Geburtsdatumsfeld wurde nicht ausgefüllt!"
+            elif input_first_name == "":
+                error_text = "Das Vornamenfeld wurde nicht ausgefüllt!"
+            elif input_last_name == "":
+                error_text = "Das Nachnamenfeld wurde nicht ausgefüllt!"
+            elif input_salery_per_hour == "":
+                error_text = "Das Bezahlung-Pro-Stundefeld wurde nicht ausgefüllt!"
+            elif input_role == "":
+                error_text = "Das Rollenfeld wurde nicht ausgefüllt!"
+            elif input_username == "":
+                error_text = "Das Nutzernamenfeld wurde nicht ausgefüllt!"
+            elif input_password == "":
+                error_text = "Das Passwortfeld wurde nicht ausgefüllt!"
+
+            if(error_text is not None):
+                error_occurred = True
+
+            if not error_occurred:
+                try:
+                    val = float(input_salery_per_hour)
+                    error_occurred = True
+                except ValueError:
+                    error_text = "'" + input_salery_per_hour + "' ist kein numerischer Wert! Bitte gebe im 'Bezahlung-pro-Stundefeld' einen numerischen Wert an!"
+
+
+            if error_text is not None:
+                return redirect("/create_user?error=1&error_message=" + error_text)
+
             self.db.execute("INSERT INTO employee(firstName, lastName, gender, position, saleryPerHour, titel, birthDate, informations, idaddress, password, Username, idrole) VALUES "
                             + "('" + input_first_name + "','"+ input_last_name + "','"+ input_gender + "','"+ input_job_position + "',"+ input_salery_per_hour + ",'"+ input_title + "','"+ input_birth_date + "','"+ input_informations + "<',4,'" + input_password  + "','"+ input_username  + "', 3);", commit=True)
 

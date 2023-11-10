@@ -48,9 +48,29 @@
       scroll-behavior: smooth;
       }
     </style>
+    <script>
+        function showOrHideErrorField() {
+            let params = new URLSearchParams(window.location.search);
+
+            let hasErrorOccurred = params.get("error");
+            let errorMessage = params.get("error_message");
+
+            var errorLabel = document.getElementById("error_label");
+
+            if(hasErrorOccurred == "1") {
+                errorLabel.style.display = "block";
+                errorLabel.textContent = errorMessage;
+            } else {
+                errorLabel.style.display = "none";
+            }
+        }
+    </script>
 {% endblock %}
 {% block body %}
     {{ super() }}
+    <script>
+        window.onload = showOrHideErrorField;
+    </script>
     <link rel="stylesheet" href="./style.css" />
     <div>
       <link href="./benutzer-anlegen.css" rel="stylesheet" />
@@ -59,11 +79,12 @@
           <h1 class="benutzer-anlegen-text" style="margin-left: 90px">Benutzererfassung</h1>
           <div class="hc" style="padding: 100px">
               <div class="vc">
-                <div class="benutzer-anlegen-banner"></div>
+                <div class="benutzer-anlegen-banner vc"></div>
+                  <label id="error_label" style="color: red; margin-bottom: 30px"></label>
                   <form action="/api/v1/create_user" method="POST">
                         <input
                           type="text"
-                          placeholder="Straße"
+                          placeholder="Straße*"
                           class="benutzer-anlegen-textinput input"
                           style="margin-bottom: 20px"
                           id="input_street"
@@ -71,7 +92,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Hausnummer"
+                          placeholder="Hausnummer*"
                           class="benutzer-anlegen-textinput input"
                           style="margin-bottom: 20px"
                           id="input_house_number"
@@ -79,7 +100,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Stadt"
+                          placeholder="Stadt*"
                           class="benutzer-anlegen-textinput02 input"
                           style="margin-bottom: 20px"
                           id="input_city"
@@ -87,7 +108,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="PLZ"
+                          placeholder="PLZ*"
                           class="benutzer-anlegen-textinput03 input"
                           style="margin-bottom: 20px"
                           id="input_PLZ"
@@ -95,7 +116,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Land"
+                          placeholder="Land*"
                           class="benutzer-anlegen-textinput08 input"
                           style="margin-bottom: 20px"
                           id="input_country"
@@ -111,7 +132,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Berufsposition"
+                          placeholder="Berufsposition*"
                           class="benutzer-anlegen-textinput04 input"
                           style="margin-bottom: 20px"
                           id="input_job_position"
@@ -119,7 +140,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Geschlecht"
+                          placeholder="Geschlecht*"
                           class="benutzer-anlegen-textinput05 input"
                           style="margin-bottom: 20px"
                           id="input_gender"
@@ -127,7 +148,7 @@
                         />
                         <input
                           type="date"
-                          placeholder="Geburtsdatum"
+                          placeholder="Geburtsdatum*"
                           class="benutzer-anlegen-textinput06 input"
                           style="margin-bottom: 20px"
                           id="input_birth_date"
@@ -135,7 +156,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Vorname"
+                          placeholder="Vorname*"
                           class="benutzer-anlegen-textinput09 input"
                           style="margin-bottom: 20px"
                           id="input_first_name"
@@ -143,7 +164,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Nachname"
+                          placeholder="Nachname*"
                           class="benutzer-anlegen-textinput09 input"
                           style="margin-bottom: 20px"
                           id="input_last_name"
@@ -151,7 +172,7 @@
                         />
                         <input
                           type="text"
-                          placeholder="Gehalt/Std."
+                          placeholder="Gehalt/Std.*"
                           class="benutzer-anlegen-textinput10 input"
                           style="margin-bottom: 20px"
                           id="input_salery_per_hour"
@@ -159,7 +180,7 @@
                         />
                       <input
                           type="text"
-                          placeholder="Rolle"
+                          placeholder="Rolle*"
                           class="benutzer-anlegen-textinput10 input"
                           style="margin-bottom: 20px"
                           id="input_role"
@@ -167,7 +188,7 @@
                         />
                       <input
                           type="text"
-                          placeholder="Nutzername"
+                          placeholder="Nutzername*"
                           class="benutzer-anlegen-textinput10 input"
                           style="margin-bottom: 20px"
                           id="input_username"
@@ -175,7 +196,7 @@
                         />
                       <input
                           type="password"
-                          placeholder="Passwort"
+                          placeholder="Passwort*"
                           class="benutzer-anlegen-textinput10 input"
                           style="margin-bottom: 20px"
                           id="input_password"
