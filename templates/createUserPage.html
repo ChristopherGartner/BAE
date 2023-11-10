@@ -79,9 +79,9 @@
           <h1 class="benutzer-anlegen-text" style="margin-left: 90px">Benutzererfassung</h1>
           <div class="hc" style="padding: 100px">
               <div class="vc">
-                <div class="benutzer-anlegen-banner vc"></div>
+                <div class="benutzer-anlegen-banner vc" style="align-items: flex-start"></div>
                   <label id="error_label" style="color: red; margin-bottom: 30px"></label>
-                  <form action="/api/v1/create_user" method="POST">
+                  <form action="/api/v1/create_user" method="POST" class="vc" style="align-items: flex-start">
                         <input
                           type="text"
                           placeholder="Straße*"
@@ -138,14 +138,17 @@
                           id="input_job_position"
                           name="input_job_position"
                         />
-                        <input
+                        <select
                           type="text"
-                          placeholder="Geschlecht*"
                           class="benutzer-anlegen-textinput05 input"
                           style="margin-bottom: 20px"
                           id="input_gender"
                           name="input_gender"
-                        />
+                        >
+                            <option value="m">männlich</option>
+                            <option value="f">weiblich</option>
+                            <option value="d">divers</option>
+                        </select>
                         <input
                           type="date"
                           placeholder="Geburtsdatum*"
