@@ -48,8 +48,6 @@ class BAE:
                             pool_size=15)
         self.sessions = Sessions(self.db)
 
-
-
     def createHash(self, k):
         return ''.join(random.choices(string.ascii_letters + string.digits, k))
 
@@ -121,10 +119,11 @@ class BAE:
 
         @self.app.route('/project/<project_id>')
         def project(project_id):
-            if not self.sessions.validate(request.cookies.get('token', default=''), role_required="EMPLOYEE", project=project_id):
+            if not self.sessions.validate(request.cookies.get('token', default=''), role_required="EMPLOYEE",
+                                          project=project_id):
                 return redirect("/login")
 
-            #TODO get corresponding project data and prepare response
+            # TODO get corresponding project data and prepare response
             return make_response()
 
         # API
@@ -133,7 +132,6 @@ class BAE:
         def api_login():
             username = request.form['username']
             password = request.form['password']
-
 
             token = self.sessions.register(username, password)
             if token is None:
@@ -194,25 +192,25 @@ class BAE:
             elif input_password == "":
                 error_text = "Das Passwortfeld wurde nicht ausgefüllt!"
 
-            if(error_text is not None):
+            if (error_text is not None):
                 error_occurred = True
 
             if not error_occurred:
                 try:
                     val = float(input_salery_per_hour)
-                    error_occurred = True
                 except ValueError:
                     error_text = "'" + input_salery_per_hour + "' ist kein numerischer Wert! Bitte gebe im 'Bezahlung-pro-Stundefeld' einen numerischen Wert an!"
-
+                    error_occurred = True
 
             if error_occurred:
                 return redirect("/create_user?error=1&error_message=" + error_text)
 
-            self.db.execute("INSERT INTO employee(firstName, lastName, gender, position, saleryPerHour, titel, birthDate, informations, idaddress, password, Username, idrole) VALUES "
-                            + "('" + input_first_name + "','"+ input_last_name + "','"+ input_gender + "','"+ input_job_position + "',"+ input_salery_per_hour + ",'"+ input_title + "','"+ input_birth_date + "','"+ input_informations + "<',4,'" + input_password  + "','"+ input_username  + "', 3);", commit=True)
+            self.db.execute(
+                "INSERT INTO employee(firstName, lastName, gender, position, saleryPerHour, titel, birthDate, informations, idaddress, password, Username, idrole) VALUES "
+                + "('" + input_first_name + "','" + input_last_name + "','" + input_gender + "','" + input_job_position + "'," + input_salery_per_hour + ",'" + input_title + "','" + input_birth_date + "','" + input_informations + "<',4,'" + input_password + "','" + input_username + "', 3);",
+                commit=True)
 
             return redirect("/create_user")
-
 
         @self.app.route('/api/v1/create_project', methods=['POST'])
         def api_create_project():
@@ -283,7 +281,6 @@ class BAE:
                 commit=True)
 
             return redirect("/create_customer")
-
 
         @self.app.route('/android-chrome-192x192.png')
         @self.app.route('/android-chrome-512x512.png')

@@ -82,41 +82,71 @@
                 <div class="benutzer-anlegen-banner vc"></div>
                   <label id="error_label" style="color: red; margin-bottom: 30px"></label>
                   <form action="/api/v1/create_project" method="POST" class="vc" style="align-items: flex-start">
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Projektbeginn<b>*</b>
+                        </label>
                         <input
                           type="date"
-                          placeholder="Projektbeginn*"
                           class="benutzer-anlegen-textinput01 input"
-                          style="margin-bottom: 20px"
                           id="input_project_begin"
                           name="input_project_begin"
                         />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          voraussichtl. Projektende<b>*</b>
+                        </label>
                         <input
                           type="date"
-                          placeholder="voraussichtl. Projektende*"
                           class="benutzer-anlegen-textinput02 input"
-                          style="margin-bottom: 20px"
                           id="input_project_end"
                           name="input_project_end"
                         />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Budget (in €)<b>*</b>
+                        </label>
                         <input
                           type="text"
-                          placeholder="Budget*"
+                          placeholder="0000"
                           class="benutzer-anlegen-textinput03 input"
-                          style="margin-bottom: 20px"
                           id="input_budget"
                           name="input_budget"
                         />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Priorität<b>*</b>
+                        </label>
                         <input
                           type="text"
-                          placeholder="Priorität*"
+                          placeholder="0"
                           class="benutzer-anlegen-textinput03 input"
-                          style="margin-bottom: 20px"
                           id="input_priority"
                           name="input_priority"
                         />
-                        <button type="submit" value="create_project" class="benutzer-anlegen-button button">
-                            Projekt anlegen
-                        </button>
+                      </div>
+                      <button type="submit" value="create_project" class="benutzer-anlegen-button button">
+                        Projekt anlegen
+                      </button>
                   </form>
               </div>
               <img
