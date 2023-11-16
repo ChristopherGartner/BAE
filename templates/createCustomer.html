@@ -82,60 +82,109 @@
                 <div class="benutzer-anlegen-banner vc"></div>
                   <label id="error_label" style="color: red; margin-bottom: 30px"></label>
                   <form action="/api/v1/create_customer" method="POST" class="vc" style="align-items: flex-start">
-                      <input
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Name<b>*</b>
+                        </label>
+                        <input
                           type="text"
-                          placeholder="Name*"
+                          placeholder="Musterkunde"
                           class="benutzer-anlegen-textinput03 input"
-                          style="margin-bottom: 20px"
                           id="input_name"
                           name="input_name"
                           onmouseover="color='#87CEFAFF'"
-                      />
-                      <input
+                        />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Straße<b>*</b>
+                        </label>
+                        <input
                           type="text"
-                          placeholder="Straße*"
+                          placeholder="Musterstraße"
                           class="benutzer-anlegen-textinput02 input"
-                          style="margin-bottom: 20px"
                           id="input_street"
                           name="input_street"
                           onmouseover="color='#87CEFAFF'"
-                      />
-                      <input
+                        />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Hausnummer<b>*</b>
+                        </label>
+                        <input
                           type="text"
-                          placeholder="Hausnummer*"
+                          placeholder="00"
                           class="benutzer-anlegen-textinput05 input"
-                          style="margin-bottom: 20px"
                           id="input_house_number"
                           name="input_house_number"
                           onmouseover="color='#87CEFAFF'"
-                      />
-                      <input
+                        />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Stadt<b>*</b>
+                        </label>
+                        <input
                           type="text"
-                          placeholder="Stadt*"
+                          placeholder="Musterstadt"
                           class="benutzer-anlegen-textinput07 input"
-                          style="margin-bottom: 20px"
                           id="input_city"
                           name="input_city"
                           onmouseover="color='#87CEFAFF'"
-                      />
-                      <input
+                        />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          PLZ<b>*</b>
+                        </label>
+                        <input
                           type="text"
-                          placeholder="PLZ*"
+                          placeholder="00000"
                           class="benutzer-anlegen-textinput01 input"
-                          style="margin-bottom: 20px"
                           id="input_plz"
                           name="input_plz"
                           onmouseover="color='#87CEFAFF'"
-                      />
-                      <input
+                        />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                        <label
+                          style="margin-right: 20px;
+                          font-size: 20px;
+                          width: 200px"
+                        >
+                          Land<b>*</b>
+                        </label>
+                        <input
                           type="text"
-                          placeholder="Land*"
+                          placeholder="Musterland"
                           class="benutzer-anlegen-textinput06 input"
                           style="margin-bottom: 20px"
                           id="input_country"
                           name="input_country"
                           onmouseover="color='#87CEFAFF'"
-                      />
+                        />
+                      </div>
                       <button type="submit" value="create_customer" class="benutzer-anlegen-button button">
                             Kunde anlegen
                       </button>
