@@ -82,66 +82,129 @@
                 <div class="benutzer-anlegen-banner vc" style="align-items: flex-start"></div>
                   <label id="error_label" style="color: red; margin-bottom: 30px"></label>
                   <form action="/api/v1/create_user" method="POST" class="vc" style="align-items: flex-start">
-                        <input
-                          type="text"
-                          placeholder="Straße*"
-                          class="benutzer-anlegen-textinput input"
-                          style="margin-bottom: 20px"
-                          id="input_street"
-                          name="input_street"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Hausnummer*"
-                          class="benutzer-anlegen-textinput input"
-                          style="margin-bottom: 20px"
-                          id="input_house_number"
-                          name="input_house_number"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Stadt*"
-                          class="benutzer-anlegen-textinput02 input"
-                          style="margin-bottom: 20px"
-                          id="input_city"
-                          name="input_city"
-                        />
-                        <input
-                          type="text"
-                          placeholder="PLZ*"
-                          class="benutzer-anlegen-textinput03 input"
-                          style="margin-bottom: 20px"
-                          id="input_PLZ"
-                          name="input_PLZ"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Land*"
-                          class="benutzer-anlegen-textinput08 input"
-                          style="margin-bottom: 20px"
-                          id="input_country"
-                          name="input_country"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Titel"
-                          class="benutzer-anlegen-textinput01 input"
-                          style="margin-bottom: 20px"
-                          id="input_title"
-                          name="input_title"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Berufsposition*"
-                          class="benutzer-anlegen-textinput04 input"
-                          style="margin-bottom: 20px"
-                          id="input_job_position"
-                          name="input_job_position"
-                        />
-                        <select
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Straße<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Musterstraße"
+                              class="benutzer-anlegen-textinput input"
+                              id="input_street"
+                              name="input_street"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Hausnummer<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="01"
+                              class="benutzer-anlegen-textinput input"
+                              id="input_house_number"
+                              name="input_house_number"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Stadt<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Musterstadt"
+                              class="benutzer-anlegen-textinput02 input"
+                              id="input_city"
+                              name="input_city"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              PLZ<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="00000"
+                              class="benutzer-anlegen-textinput03 input"
+                              id="input_PLZ"
+                              name="input_PLZ"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Land<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Musterland"
+                              class="benutzer-anlegen-textinput08 input"
+                              id="input_country"
+                              name="input_country"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Titel
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Mustertitel"
+                              class="benutzer-anlegen-textinput01 input"
+                              id="input_title"
+                              name="input_title"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Berufsposition<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Musterjob"
+                              class="benutzer-anlegen-textinput04 input"
+                              id="input_job_position"
+                              name="input_job_position"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Geschlecht<b>*</b>
+                          </label>
+                          <select
                           type="text"
                           class="benutzer-anlegen-textinput05 input"
-                          style="margin-bottom: 20px"
                           id="input_gender"
                           name="input_gender"
                         >
@@ -149,72 +212,136 @@
                             <option value="f">weiblich</option>
                             <option value="d">divers</option>
                         </select>
-                        <input
-                          type="date"
-                          placeholder="Geburtsdatum*"
-                          class="benutzer-anlegen-textinput06 input"
-                          style="margin-bottom: 20px"
-                          id="input_birth_date"
-                          name="input_birth_date"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Vorname*"
-                          class="benutzer-anlegen-textinput09 input"
-                          style="margin-bottom: 20px"
-                          id="input_first_name"
-                          name="input_first_name"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Nachname*"
-                          class="benutzer-anlegen-textinput09 input"
-                          style="margin-bottom: 20px"
-                          id="input_last_name"
-                          name="input_last_name"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Gehalt/Std.*"
-                          class="benutzer-anlegen-textinput10 input"
-                          style="margin-bottom: 20px"
-                          id="input_salery_per_hour"
-                          name="input_salery_per_hour"
-                        />
-                      <input
-                          type="text"
-                          placeholder="Rolle*"
-                          class="benutzer-anlegen-textinput10 input"
-                          style="margin-bottom: 20px"
-                          id="input_role"
-                          name="input_role"
-                        />
-                      <input
-                          type="text"
-                          placeholder="Nutzername*"
-                          class="benutzer-anlegen-textinput10 input"
-                          style="margin-bottom: 20px"
-                          id="input_username"
-                          name="input_username"
-                        />
-                      <input
-                          type="password"
-                          placeholder="Passwort*"
-                          class="benutzer-anlegen-textinput10 input"
-                          style="margin-bottom: 20px"
-                          id="input_password"
-                          name="input_password"
-                        />
-                        <textarea
-                          placeholder="Zusätzliche Informationen"
-                          class="benutzer-anlegen-textarea textarea"
-                          style="margin-bottom: 40px"
-                          id="input_informations"
-                          name="input_informations"
-                        ></textarea>
-                        <button type="submit" value="create_user" class="benutzer-anlegen-button button">
-                            Benutzer anlegen
-                        </button>
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Geburtsdatum<b>*</b>
+                          </label>
+                          <input
+                              type="date"
+                              class="benutzer-anlegen-textinput06 input"
+                              id="input_birth_date"
+                              name="input_birth_date"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Vorname<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Hans"
+                              class="benutzer-anlegen-textinput09 input"
+                              id="input_first_name"
+                              name="input_first_name"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Nachname<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Mustermann"
+                              class="benutzer-anlegen-textinput09 input"
+                              id="input_last_name"
+                              name="input_last_name"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Gehalt/Std.<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="1.0"
+                              class="benutzer-anlegen-textinput10 input"
+                              id="input_salery_per_hour"
+                              name="input_salery_per_hour"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Rolle<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="Musterrolle"
+                              class="benutzer-anlegen-textinput10 input"
+                              id="input_role"
+                              name="input_role"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Nutzername<b>*</b>
+                          </label>
+                          <input
+                              type="text"
+                              placeholder="max_mustermann01"
+                              class="benutzer-anlegen-textinput10 input"
+                              id="input_username"
+                              name="input_username"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Passwort<b>*</b>
+                          </label>
+                          <input
+                              type="password"
+                              class="benutzer-anlegen-textinput10 input"
+                              id="input_password"
+                              name="input_password"
+                          />
+                      </div>
+                      <div class="hc" style="margin-bottom: 20px">
+                          <label
+                              style="margin-right: 20px;
+                              font-size: 20px;
+                              width: 200px"
+                          >
+                              Zusätzliche Informationen<b>*</b>
+                          </label>
+                          <textarea
+                              placeholder="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed..."
+                              class="benutzer-anlegen-textarea textarea"
+                              id="input_informations"
+                              name="input_informations"
+                          >
+                          </textarea>
+                      </div>
+                      <button type="submit" value="create_user" class="benutzer-anlegen-button button">
+                          Benutzer anlegen
+                      </button>
                   </form>
               </div>
               <img
