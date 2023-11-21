@@ -218,11 +218,14 @@ class BAE:
             input_project_end = request.form['input_project_end']
             input_budget = request.form['input_budget']
             input_priority = request.form['input_priority']
+            input_customer_id = request.form['input_customer_id']
 
             error_text = None
             error_occurred = False
 
-            if input_project_begin == "":
+            if input_customer_id == "":
+                error_text = "Das Kunden-ID-Feld wurde nicht befüllt!"
+            elif input_project_begin == "":
                 error_text = "Das Projektbeginnfeld wurde nicht ausgefüllt!"
             elif input_project_end == "":
                 error_text = "Das voraussichtliches Projektendefeld wurde nicht ausgefüllt!"
@@ -230,6 +233,8 @@ class BAE:
                 error_text = "Das Budgetfeld wurde nicht ausgefüllt!"
             elif input_priority == "":
                 error_text = "Das Projektprioritätfeld wurde nicht ausgefüllt!"
+            elif input_customer_id == "":
+                error_text = "Das Kunden-ID-Feld wurde nicht befüllt!"
 
             if (error_text is not None):
                 error_occurred = True
@@ -239,7 +244,7 @@ class BAE:
 
             self.db.execute(
                 "INSERT INTO project(idcustomer, startDate, plannedEndingDate, idaddress, priority, budget) VALUES "
-                + "(2, '" + input_project_begin + "','" + input_project_end + "',3,'" + input_priority + "'," + input_budget + ");",
+                + "(" + input_customer_id + ", '" + input_project_begin + "','" + input_project_end + "',3,'" + input_priority + "'," + input_budget + ");",
                 commit=True)
 
             return redirect("/create_project")
