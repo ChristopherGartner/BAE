@@ -152,6 +152,18 @@ class BAE:
 
             return jsonify(selectedProjects)
 
+        @self.app.route('/api/v1/user_main_page_data', methods=['GET'])
+        def api_load_user_main_page_data():
+            userFullName = self.sessions.get_user_full_name_with_salutation(request.cookies.get("token", default="NOT FOUND"))
+            userTitel = self.sessions.get_user_job_titel(request.cookies.get("token", default="NOT FOUND"))
+            userId = self.sessions.get_user_id(request.cookies.get("token", default="NOT FOUND"))
+
+            return jsonify({
+                "userFullName": userFullName,
+                "userTitel": userTitel,
+                "userId": userId
+            })
+
         @self.app.route('/api/v1/create_user', methods=['POST'])
         def api_create_user():
             input_street = request.form['input_street']

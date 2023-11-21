@@ -40,12 +40,16 @@ class Sessions:
     def register(self, user, password):
         # TODO check PW in DB or against cached list, get role and get allowed projects, if pw wrong return None
 
-        res = self.db.execute("SELECT employee.idemployee, name FROM employee INNER JOIN role ON employee.idrole = role.roleId WHERE Username = %s AND password = %s;", (user, password))
+        res = self.db.execute("SELECT employee.idemployee, name, firstName, lastName, gender, titel FROM employee INNER JOIN role ON employee.idrole = role.roleId WHERE Username = %s AND password = %s;", (user, password))
         if len(res) == 0:
             return None
         data = [list(d) for d in res]
         role = data[0][1]
         userid = data[0][0]
+        firstName = data[0][2]
+        lastName = data[0][3]
+        gender = data[0][4]
+        titel = data[0][5]
         res = self.db.execute("SELECT idproject FROM projectEmployee WHERE projectEmployee.idemployee = %s;", (data[0][0], ))
         data = [list(d) for d in res]
         projects = []
@@ -54,7 +58,7 @@ class Sessions:
         token = str(uuid.uuid4())
         issued_on = datetime.now()
         valid_until = issued_on + timedelta(hours=self.VALID_UNTIL_HOURS)
-        self._sessions.append(Session(userid, token, user, role, projects, issued_on, valid_until))
+        self._sessions.append(Session(userid, token, user, role, firstName, lastName, gender, titel, projects, issued_on, valid_until))
         return token
 
     def invalidate_token(self, token):
@@ -66,6 +70,25 @@ class Sessions:
         for s in self._sessions:
             if s.token == token:
                 return s.userId
+
+    def get_user_full_name_with_salutation(self, token):
+        for s in self._sessions:
+            salutation = ""
+            if s.token == token:
+                match s.gender:
+                    case 'M':
+                        salutation = "Herr"
+                        break
+                    case 'F':
+                        salutation = "Frau"
+                        break
+
+                return f"{salutation} {s.firstName} {s.lastName}"
+
+    def get_user_job_titel(self, token):
+        for s in self._sessions:
+            if s.token == token:
+                return s.titel
 
     def invalidate_user(self, user):
         for s in self._sessions:
@@ -79,6 +102,10 @@ class Session:
     token: str
     user: str
     role: str
+    firstName: str
+    lastName: str
+    gender: str
+    titel: str
     projects: []
     issued_on: datetime
     valid_until: datetime

@@ -61,11 +61,9 @@
               class="mitarbeiterbersicht-projekte-image"
             />
             <div class="mitarbeiterbersicht-projekte-container1">
-              <span class="mitarbeiterbersicht-projekte-text">Herr XY</span>
-              <span class="mitarbeiterbersicht-projekte-text1">Position</span>
-              <span class="mitarbeiterbersicht-projekte-text2">
-                Employee ID
-              </span>
+              <span class="mitarbeiterbersicht-projekte-text" id="label_user_full_name">LABEL_USER_FULL_NAME</span>
+              <span class="mitarbeiterbersicht-projekte-text1" id="label_user_position">LABEL_USER_POSITION</span>
+              <span class="mitarbeiterbersicht-projekte-text2" id="label_user_id">LABEL_USER_ID</span>
             </div>
           </div>
     </div>
@@ -107,6 +105,20 @@
             })
         })
         }
+
+        function setUserLabels()
+        {
+            fetch('/api/v1/user_main_page_data', {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'}
+            }).then(res => res.json()).then(dictionary => {
+                document.getElementById("label_user_full_name").innerText = dictionary["userFullName"]
+                document.getElementById("label_user_position").innerText = dictionary["userTitel"]
+                document.getElementById("label_user_id").innerText = dictionary["userId"]
+            })
+        }
+
+        setUserLabels()
         fillTable()
     </script>
 {% endblock %}
