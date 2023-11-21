@@ -118,23 +118,23 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.mitarbeiterbersicht-projekte-text {
-  font-size: 24px;
+.mitarbeiterbersicht-projekte-text-main-page {
+  font-size: 18px;
   font-style: normal;
   font-family: "Georgia";
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
-.mitarbeiterbersicht-projekte-text1 {
-  font-size: 24px;
+.mitarbeiterbersicht-projekte-text1-main-page {
+  font-size: 16px;
   font-style: normal;
   font-family: "Georgia";
   font-weight: 400;
   margin-bottom: 0.25rem;
 }
-.mitarbeiterbersicht-projekte-text2 {
+.mitarbeiterbersicht-projekte-text2-main-page {
   color: var(--dl-color-gray-black);
-  font-size: 14px;
+  font-size: 8px;
   font-style: normal;
   font-family: "Georgia";
   font-weight: 400;

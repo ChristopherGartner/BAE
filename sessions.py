@@ -78,10 +78,9 @@ class Sessions:
                 match s.gender:
                     case 'M':
                         salutation = "Herr"
-                        break
+
                     case 'F':
                         salutation = "Frau"
-                        break
 
                 return f"{salutation} {s.firstName} {s.lastName}"
 

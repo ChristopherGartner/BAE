@@ -61,9 +61,9 @@
               class="mitarbeiterbersicht-projekte-image"
             />
             <div class="mitarbeiterbersicht-projekte-container1">
-              <span class="mitarbeiterbersicht-projekte-text" id="label_user_full_name">LABEL_USER_FULL_NAME</span>
-              <span class="mitarbeiterbersicht-projekte-text1" id="label_user_position">LABEL_USER_POSITION</span>
-              <span class="mitarbeiterbersicht-projekte-text2" id="label_user_id">LABEL_USER_ID</span>
+                <span class="mitarbeiterbersicht-projekte-text-main-page" id="label_user_full_name">LABEL_USER_FULL_NAME</span>
+                <span class="mitarbeiterbersicht-projekte-text1-main-page" id="label_user_position"><I>LABEL_USER_POSITION</I></span>
+              <span class="mitarbeiterbersicht-projekte-text2-main-page" id="label_user_id">LABEL_USER_ID</span>
             </div>
           </div>
     </div>
@@ -112,9 +112,16 @@
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             }).then(res => res.json()).then(dictionary => {
-                document.getElementById("label_user_full_name").innerText = dictionary["userFullName"]
-                document.getElementById("label_user_position").innerText = dictionary["userTitel"]
-                document.getElementById("label_user_id").innerText = dictionary["userId"]
+                document.getElementById("label_user_full_name").innerText = dictionary["userFullName"];
+                document.getElementById("label_user_position").innerText = dictionary["userTitel"];
+                document.getElementById("label_user_id").innerText = "UserID: " + dictionary["userId"];
+
+                document.getElementById("label_user_full_name").style.fontWeight = "bold";
+                document.getElementById("label_user_full_name").style.fontSize = "18px";
+
+                document.getElementById("label_user_position").style.fontSize = "14px";
+
+                document.getElementById("label_user_id").style.fontSize = "10px";
             })
         }
 
