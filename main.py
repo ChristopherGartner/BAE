@@ -141,6 +141,17 @@ class BAE:
             resp.set_cookie("token", token)
             return resp
 
+        @self.app.route('/api/v1/project_list', methods=['GET'])
+        def api_load_project_data():
+            userId = self.sessions.get_user_id(request.cookies.get("token", default="NOT FOUND"))
+
+            selectedProjects = self.db.execute(""
+                            f"SELECT project.idproject, customer.name, project.startDate, project.plannedEndingDate, project.budget, project.priority FROM project INNER JOIN projectEmployee ON project.idProject = projectEmployee.idProject INNER JOIN customer ON project.idcustomer = customer.idcustomer "
+                            f"WHERE projectEmployee.idemployee = {userId};"
+                            )
+
+            return jsonify(selectedProjects)
+
         @self.app.route('/api/v1/create_user', methods=['POST'])
         def api_create_user():
             input_street = request.form['input_street']

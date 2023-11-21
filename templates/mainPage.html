@@ -68,36 +68,45 @@
               </span>
             </div>
           </div>
-        </div>
-        <h1 class="mitarbeiterbersicht-projekte-text3">
-          Individuelle Projektübersicht
-        </h1>
-        <span class="mitarbeiterbersicht-projekte-text4">
-          001 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp;Projekt 1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp;02.10.2023 - 20.11.2023 &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;180 h &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;in Bearbeitung
-          &nbsp; &nbsp;&nbsp;
-        </span>
-        <span class="mitarbeiterbersicht-projekte-text5">
-          004 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp;Projekt 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp;02.10.2023 - 20.11.2023 &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          0 h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp;offen &nbsp; &nbsp;&nbsp;
-        </span>
-        <span class="mitarbeiterbersicht-projekte-text6">
-          007 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp;Projekt 7 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp;04.05.2022 - 16.05.2022 &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;50 &nbsp; h
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;erledigt
-          &nbsp; &nbsp;
-        </span>
-        <div class="mitarbeiterbersicht-projekte-banner"></div>
-      </div>
     </div>
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <h1 class="mitarbeiterbersicht-projekte-text3">
+      Individuelle Projektübersicht
+    </h1>
+    <table class="mitarbeiterbersicht-projekte-textIchHasseMeinLeben styled-table" id="project_table">
+        <thread>
+            <tr>
+                <th>Projekt-ID</th>
+                <th>Kunde</th>
+                <th>Startdatum</th>
+                <th>Enddatum</th>
+                <th>Budget</th>
+                <th>Priorität</th>
+            </tr>
+        </thread>
+        <tbody id="project_table_body">
+        </tbody>
+    </table>
+    <div style="height: 800px"></div>
+    <script defer>
+        function fillTable()
+        {
+            fetch('/api/v1/project_list', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        }).then(res => res.json()).then(jsonRes => {
+            $.each(jsonRes, function() {
+                 let temp = this
+                 let newRow = document.createElement("tr")
+                 newRow.classList.add()
+                 $.each(temp, function(){
+                     let newCell = document.createElement("td")
+                     newCell.innerText = this
+                     newRow.appendChild(newCell)
+                 })
+                 document.getElementById("project_table_body").appendChild(newRow)
+            })
+        })
+        }
+        fillTable()
+    </script>
 {% endblock %}

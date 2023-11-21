@@ -45,6 +45,7 @@ class Sessions:
             return None
         data = [list(d) for d in res]
         role = data[0][1]
+        userid = data[0][0]
         res = self.db.execute("SELECT idproject FROM projectEmployee WHERE projectEmployee.idemployee = %s;", (data[0][0], ))
         data = [list(d) for d in res]
         projects = []
@@ -53,13 +54,18 @@ class Sessions:
         token = str(uuid.uuid4())
         issued_on = datetime.now()
         valid_until = issued_on + timedelta(hours=self.VALID_UNTIL_HOURS)
-        self._sessions.append(Session(token, user, role, projects, issued_on, valid_until))
+        self._sessions.append(Session(userid, token, user, role, projects, issued_on, valid_until))
         return token
 
     def invalidate_token(self, token):
         for s in self._sessions:
             if s.token == token:
                 self._sessions.remove(s)
+
+    def get_user_id(self, token):
+        for s in self._sessions:
+            if s.token == token:
+                return s.userId
 
     def invalidate_user(self, user):
         for s in self._sessions:
@@ -69,6 +75,7 @@ class Sessions:
 
 @dataclass
 class Session:
+    userId: str
     token: str
     user: str
     role: str
