@@ -66,6 +66,10 @@
   border-radius: 4px;
   background-color: var(--dl-color-gray-white);
 }
+.input:hover {
+  border: 2px solid darkmagenta;
+}
+
 .Section-Text {
   font-size: 18px;
   font-family: Open Sans;
