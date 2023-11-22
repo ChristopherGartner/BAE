@@ -152,6 +152,11 @@ class BAE:
 
             return jsonify(selectedProjects)
 
+        @self.app.route('/api/v1/customer_list', methods=['GET'])
+        def api_load_customer_data():
+            selectedCustomers = self.db.execute(f"SELECT customer.idcustomer, customer.name FROM customer")
+            return jsonify(selectedCustomers)
+
         @self.app.route('/api/v1/user_main_page_data', methods=['GET'])
         def api_load_user_main_page_data():
             userFullName = self.sessions.get_user_full_name_with_salutation(request.cookies.get("token", default="NOT FOUND"))

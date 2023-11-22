@@ -96,7 +96,6 @@
                           id="input_customer_id"
                           name="input_customer_id"
                         >
-                            <option value="2">Kunde X</option>
                         </select>
                       </div>
                       <div class="hc" style="margin-bottom: 20px"  title="Das Startdatum des Projekts. Dieses muss vor dem voraussichtlichen Enddatum liegen!">
@@ -180,5 +179,26 @@
           </div>
       </div>
     </div>
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script>
+        function loadCustomerData()
+        {
+            fetch('/api/v1/customer_list', {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'}
+            }).then(res => res.json()).then(customer => {
+                $.each(customer, function (){
+                    let customerId = this[0]
+                    let customerName = this[1]
+
+                    let optionElement = document.createElement("option")
+                    optionElement.setAttribute("value", customerId)
+                    optionElement.innerText = customerName
+
+                    document.getElementById("input_customer_id").appendChild(optionElement)
+                })
+            })
+        }
+
+        loadCustomerData()
+    </script>
 {% endblock %}
