@@ -68,31 +68,126 @@
             </div>
           </div>
     </div>
+    <button class="cssbuttons-io-button" style="
+      position: absolute;
+      top: 350px;
+      left: 100px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    ">
+      Projektübersicht
+      <div class="icon">
+        <svg
+          height="24"
+          width="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </div>
+    </button>
+    <button class="cssbuttons-io-button2" style="
+      position: absolute;
+      top: 350px;
+      left: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    ">
+      Benutzerübersicht
+      <div class="icon2">
+        <svg
+          height="24"
+          width="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </div>
+    </button>
+    <button class="cssbuttons-io-button3" style="
+      position: absolute;
+      top: 350px;
+      left: 700px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    ">
+      Benutzerübersicht
+      <div class="icon3">
+        <svg
+          height="24"
+          width="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </div>
+    </button>
     <h1 class="mitarbeiterbersicht-projekte-text3">
       Individuelle Projektübersicht
     </h1>
     <table class="mitarbeiterbersicht-projekte-textIchHasseMeinLeben styled-table" id="project_table">
-        <thread>
-            <tr>
-                <th>Projekt-ID</th>
-                <th>Kunde</th>
-                <th>Startdatum</th>
-                <th>Enddatum</th>
-                <th>Budget</th>
-                <th>Priorität</th>
-            </tr>
+        <thread id="project_table_hread">
         </thread>
         <tbody id="project_table_body">
         </tbody>
     </table>
     <div style="height: 800px"></div>
     <script defer>
-        function fillTable()
+        function fillProjectTable()
         {
             fetch('/api/v1/project_list', {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         }).then(res => res.json()).then(jsonRes => {
+            let new_thread = document.createElement('thread');
+
+            let new_tbody = document.createElement('tbody');
+            new_tbody.setAttribute("id", "project_table_body");
+
+            let element_tablerow = document.createElement("tr")
+
+            let element_projectId = document.createElement("th")
+            let element_customer = document.createElement("th")
+            let element_startDate = document.createElement("th")
+            let element_endingDate = document.createElement("th")
+            let element_budget = document.createElement("th")
+            let element_priority = document.createElement("th")
+
+            element_projectId.innerText = "Projekt-ID"
+            element_customer.innerText = "Kunde"
+            element_startDate.innerText = "Startdatum"
+            element_endingDate.innerText = "Enddatum"
+            element_budget.innerText = "Budget"
+            element_priority.innerText = "Priorität"
+
+            element_tablerow.appendChild(element_projectId)
+            element_tablerow.appendChild(element_customer)
+            element_tablerow.appendChild(element_startDate)
+            element_tablerow.appendChild(element_endingDate)
+            element_tablerow.appendChild(element_budget)
+            element_tablerow.appendChild(element_priority)
+
+            new_thread.appendChild(element_tablerow);
+
+            let newTable = document.createElement("table");
+            newTable.setAttribute("class", "mitarbeiterbersicht-projekte-textIchHasseMeinLeben styled-table");
+            newTable.setAttribute("id", "project_table");
+
+            newTable.appendChild(new_thread);
+            newTable.appendChild(new_tbody);
+
             $.each(jsonRes, function() {
                  let temp = this
                  let newRow = document.createElement("tr")
@@ -102,8 +197,10 @@
                      newCell.innerText = this
                      newRow.appendChild(newCell)
                  })
-                 document.getElementById("project_table_body").appendChild(newRow)
-            })
+                 new_tbody.appendChild(newRow)
+            });
+
+            document.getElementById("project_table").parentNode.replaceChild(newTable, document.getElementById("project_table"));
         })
         }
 
@@ -126,7 +223,7 @@
             })
         }
 
+        fillProjectTable()
         setUserLabels()
-        fillTable()
     </script>
 {% endblock %}
