@@ -182,7 +182,7 @@
     <script>
         function loadCustomerData()
         {
-            fetch('/api/v1/customer_list', {
+            fetch('/api/v1/customer_list_id_and_name', {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             }).then(res => res.json()).then(customer => {

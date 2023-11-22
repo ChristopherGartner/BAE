@@ -152,8 +152,8 @@ class BAE:
 
             return jsonify(selectedProjects)
 
-        @self.app.route('/api/v1/customer_list', methods=['GET'])
-        def api_load_customer_data():
+        @self.app.route('/api/v1/customer_list_id_and_name', methods=['GET'])
+        def api_load_customer_id_and_name():
             selectedCustomers = self.db.execute(f"SELECT customer.idcustomer, customer.name FROM customer")
             return jsonify(selectedCustomers)
 
