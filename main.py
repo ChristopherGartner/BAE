@@ -169,6 +169,15 @@ class BAE:
                 "userId": userId
             })
 
+        @self.app.route('/api/v1/project_data/<project_id>')
+        def api_project_data(project_id):
+            res = self.db.execute("SELECT * FROM project WHERE idproject=%s;", (project_id, ))
+            result = {"project_data": res[0]}
+            users = self.db.execute("SELECT * FROM employee INNER JOIN projectEmployee ON employee.idemployee = projectEmployee.idemployee WHERE idproject = %s;", (project_id, ))
+            result["users"] = users
+            return jsonify(result)
+
+
         @self.app.route('/api/v1/all_users', methods=['GET'])
         def api_all_users():
             return jsonify(self.db.execute("SELECT * FROM BAE.employee;"))
