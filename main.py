@@ -157,6 +157,13 @@ class BAE:
             selectedCustomers = self.db.execute(f"SELECT customer.idcustomer, customer.name FROM customer")
             return jsonify(selectedCustomers)
 
+        @self.app.route('/api/v1/customer_list', methods=['GET'])
+        def api_load_customers():
+            selectedCustomers = self.db.execute(
+                f"SELECT customer.idcustomer, customer.name, Address.streetName, Address.houseNumber, city.postCode, city.cityName, city.state, city.country FROM customer INNER JOIN Address ON customer.idaddress = Address.idAddress INNER JOIN city ON Address.idcity = city.idcity"
+            )
+            return jsonify(selectedCustomers)
+
         @self.app.route('/api/v1/user_main_page_data', methods=['GET'])
         def api_load_user_main_page_data():
             userFullName = self.sessions.get_user_full_name_with_salutation(request.cookies.get("token", default="NOT FOUND"))
