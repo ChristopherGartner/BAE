@@ -31,7 +31,6 @@ def read_args():
     args = vars(parser.parse_args())
     return args
 
-
 class BAE:
 
     @logger.catch
@@ -171,6 +170,7 @@ class BAE:
             input_city = request.form['input_city']
             input_PLZ = request.form['input_PLZ']
             input_country = request.form['input_country']
+            input_state = request.form['input_state']
             input_title = request.form['input_title']
             input_job_position = request.form['input_job_position']
             input_gender = request.form['input_gender']
@@ -196,6 +196,8 @@ class BAE:
                 error_text = "Das PLZ-Feld wurde nicht ausgefüllt!"
             elif input_country == "":
                 error_text = "Das Landfeld wurde nicht ausgefüllt!"
+            elif input_state == "":
+                error_text = "Das Bundesland-/Staatfeld wurde nicht ausgefüllt!"
             elif input_job_position == "":
                 error_text = "Das Job-Positionsfeld wurde nicht ausgefüllt!"
             elif input_gender == "":
@@ -228,9 +230,23 @@ class BAE:
             if error_occurred:
                 return redirect("/create_user?error=1&error_message=" + error_text)
 
+            # Handle database management insertion or reading for address
+            cityDatabaseEntry = self.db.execute(f"SELECT * FROM city WHERE city.postcode = {input_PLZ};")
+            cityExists = len(cityDatabaseEntry) != 0
+
+            if not cityExists:
+                self.db.execute(f"INSERT INTO city(country, postCode, state, cityName) VALUES ('{input_country}', {input_PLZ}, '{input_state}', '{input_city}');", commit=True)
+
+            cityIdSelectResult = self.db.execute(f"SELECT city.idcity FROM city WHERE city.postCode = {input_PLZ};")
+            cityId = cityIdSelectResult[0][0]
+
+            self.db.execute(f"INSERT INTO Address(houseNumber, streetName, idcity) VALUES ({input_house_number}, '{input_street}', {cityId});", commit=True)
+            addressIdSelectResult = self.db.execute(f"SELECT Address.idAddress FROM Address WHERE Address.houseNumber = {input_house_number} AND Address.streetName = '{input_street}' AND Address.idcity = {cityId};")
+            addressId = addressIdSelectResult[0][0]
+
             self.db.execute(
                 "INSERT INTO employee(firstName, lastName, gender, position, saleryPerHour, titel, birthDate, informations, idaddress, password, Username, idrole) VALUES "
-                + "('" + input_first_name + "','" + input_last_name + "','" + input_gender + "','" + input_job_position + "'," + input_salery_per_hour + ",'" + input_title + "','" + input_birth_date + "','" + input_informations + "<',4,'" + input_password + "','" + input_username + "', 3);",
+                + "('" + input_first_name + "','" + input_last_name + "','" + input_gender + "','" + input_job_position + "'," + input_salery_per_hour + ",'" + input_title + "','" + input_birth_date + "','" + input_informations + f"<',{addressId},'" + input_password + "','" + input_username + "', 3);",
                 commit=True)
 
             return redirect("/create_user")
@@ -280,6 +296,7 @@ class BAE:
             input_city = request.form['input_city']
             input_plz = request.form['input_plz']
             input_country = request.form['input_country']
+            input_state = request.form['input_state']
 
             error_text = None
             error_occurred = False
@@ -296,6 +313,8 @@ class BAE:
                 error_text = "Das PLZ-Feld wurde nicht ausgefüllt!"
             elif input_country == "":
                 error_text = "Das Landfeld wurde nicht ausgefüllt!"
+            elif input_state == "":
+                error_text = "Das Staat-/Bundeslandfeld wurde nicht ausgefüllt!"
 
             if error_text is not None:
                 error_occurred = True
@@ -303,9 +322,28 @@ class BAE:
             if error_occurred:
                 return redirect("/create_customer?error=1&error_message=" + error_text)
 
+            # Handle database management insertion or reading for address
+            cityDatabaseEntry = self.db.execute(f"SELECT * FROM city WHERE city.postcode = {input_plz};")
+            cityExists = len(cityDatabaseEntry) != 0
+
+            if not cityExists:
+                self.db.execute(
+                    f"INSERT INTO city(country, postCode, state, cityName) VALUES ('{input_country}', {input_plz}, '{input_state}', '{input_city}');",
+                    commit=True)
+
+            cityIdSelectResult = self.db.execute(f"SELECT city.idcity FROM city WHERE city.postCode = {input_plz};")
+            cityId = cityIdSelectResult[0][0]
+
+            self.db.execute(
+                f"INSERT INTO Address(houseNumber, streetName, idcity) VALUES ({input_house_number}, '{input_street}', {cityId});",
+                commit=True)
+            addressIdSelectResult = self.db.execute(
+                f"SELECT Address.idAddress FROM Address WHERE Address.houseNumber = {input_house_number} AND Address.streetName = '{input_street}' AND Address.idcity = {cityId};")
+            addressId = addressIdSelectResult[0][0]
+
             self.db.execute(
                 "INSERT INTO customer(idaddress, name) VALUES "
-                + "(2, '" + input_name + "');",
+                + f"({addressId}, '" + input_name + "');",
                 commit=True)
 
             return redirect("/create_customer")
