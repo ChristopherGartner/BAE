@@ -72,8 +72,9 @@
       position: absolute;
       top: 350px;
       left: 100px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    ">
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"
+      onclick="fillProjectTable()"
+    >
       Projektübersicht
       <div class="icon">
         <svg
@@ -118,7 +119,7 @@
       left: 700px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     ">
-      Benutzerübersicht
+      Kundenübersicht
       <div class="icon3">
         <svg
           height="24"
@@ -151,7 +152,7 @@
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         }).then(res => res.json()).then(jsonRes => {
-            let new_thread = document.createElement('thread');
+            let new_thread = document.createElement('tbody');
 
             let new_tbody = document.createElement('tbody');
             new_tbody.setAttribute("id", "project_table_body");
@@ -191,7 +192,6 @@
             $.each(jsonRes, function() {
                  let temp = this
                  let newRow = document.createElement("tr")
-                 newRow.classList.add()
                  $.each(temp, function(){
                      let newCell = document.createElement("td")
                      newCell.innerText = this
