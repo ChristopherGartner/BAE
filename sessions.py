@@ -84,6 +84,13 @@ class Sessions:
 
                 return f"{salutation} {s.firstName} {s.lastName}"
 
+    def get_user_permission_level(self, token):
+        for s in self._sessions:
+            if s.token == token:
+                for r in self.ROLES.keys():
+                    if s.role == r:
+                        return self.ROLES[r]
+
     def get_user_job_titel(self, token):
         for s in self._sessions:
             if s.token == token:

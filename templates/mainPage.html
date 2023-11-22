@@ -91,32 +91,10 @@
         </svg>
       </div>
     </button>
-    <button class="cssbuttons-io-button2" style="
-      position: absolute;
-      top: 350px;
-      left: 400px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    ">
-      Benutzerübersicht
-      <div class="icon2">
-        <svg
-          height="24"
-          width="24"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 0h24v24H0z" fill="none"></path>
-          <path
-            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-            fill="currentColor"
-          ></path>
-        </svg>
-      </div>
-    </button>
     <button class="cssbuttons-io-button3" style="
       position: absolute;
       top: 350px;
-      left: 700px;
+      left: 400px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     ">
       Kundenübersicht
@@ -135,6 +113,30 @@
         </svg>
       </div>
     </button>
+{% if user_permission_level >= 100 %}
+    <button class="cssbuttons-io-button2" style="
+      position: absolute;
+      top: 350px;
+      left: 700px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    ">
+      Benutzerübersicht
+      <div class="icon2">
+        <svg
+          height="24"
+          width="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </div>
+    </button>
+{% endif %}
     <h1 class="mitarbeiterbersicht-projekte-text3">
       Individuelle Projektübersicht
     </h1>

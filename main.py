@@ -94,9 +94,10 @@ class BAE:
         # Protected routes
         @self.app.route('/main_page', methods=['GET'])
         def mainPage():
-            if not self.sessions.validate(request.cookies.get('token', default='')):
+            token = request.cookies.get('token', default='')
+            if not self.sessions.validate(token):
                 return redirect("/login")
-            return render_template("mainPage.html")
+            return render_template("mainPage.html", user_permission_level=self.sessions.get_user_permission_level(token))
 
         @self.app.route('/create_user', methods=['GET'])
         def createUser():
@@ -123,7 +124,7 @@ class BAE:
                 return redirect("/login")
 
             # TODO get corresponding project data and prepare response
-            return make_response()
+            return render_template("project.html")
 
         # API
 
@@ -162,6 +163,10 @@ class BAE:
                 "userTitel": userTitel,
                 "userId": userId
             })
+
+        @self.app.route('/api/v1/all_users', methods=['GET'])
+        def api_all_users():
+            return jsonify(self.db.execute("SELECT * FROM BAE.employee;"))
 
         @self.app.route('/api/v1/create_user', methods=['POST'])
         def api_create_user():
