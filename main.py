@@ -164,6 +164,13 @@ class BAE:
             )
             return jsonify(selectedCustomers)
 
+        @self.app.route('/api/v1/employees_list', methods=['GET'])
+        def api_load_employees():
+            selectedEmployees = self.db.execute(
+                f"SELECT employee.idemployee, employee.firstName, employee.lastName, employee.gender, employee.position, employee.saleryPerHour, employee.titel, employee.birthDate, employee.informations, Address.streetName, Address.houseNumber, city.postCode, city.cityName, city.state, city.country, employee.Username, role.nicename FROM employee INNER JOIN Address ON employee.idaddress = Address.idAddress INNER JOIN city ON Address.idcity = city.idcity INNER JOIN role ON employee.idrole = role.roleid"
+            )
+            return jsonify(selectedEmployees)
+
         @self.app.route('/api/v1/user_main_page_data', methods=['GET'])
         def api_load_user_main_page_data():
             userFullName = self.sessions.get_user_full_name_with_salutation(request.cookies.get("token", default="NOT FOUND"))

@@ -119,8 +119,9 @@
       position: absolute;
       top: 350px;
       left: 700px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    ">
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"
+    onclick="fillEmployeeTable()"
+    >
       Mitarbeiterübersicht
       <div class="icon2">
         <svg
@@ -248,6 +249,97 @@
                 element_tablerow.appendChild(element_cityName)
                 element_tablerow.appendChild(element_cityState)
                 element_tablerow.appendChild(element_cityCountry)
+
+                new_thread.appendChild(element_tablerow);
+
+                let newTable = document.createElement("table");
+                newTable.setAttribute("class", "mitarbeiterbersicht-projekte-textIchHasseMeinLeben styled-table");
+                newTable.setAttribute("id", "project_table");
+
+                newTable.appendChild(new_thread);
+                newTable.appendChild(new_tbody);
+
+                $.each(jsonRes, function () {
+                    let temp = this
+                    let newRow = document.createElement("tr")
+                    $.each(temp, function () {
+                        let newCell = document.createElement("td")
+                        newCell.innerText = this
+                        newRow.appendChild(newCell)
+                    })
+                    new_tbody.appendChild(newRow)
+                });
+
+                document.getElementById("project_table").parentNode.replaceChild(newTable, document.getElementById("project_table"));
+            })
+        }
+
+        function fillEmployeeTable() {
+            document.getElementById("table_headline").innerText = "Mitarbeiterübersicht"
+            fetch('/api/v1/employees_list', {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'}
+            }).then(res => res.json()).then(jsonRes => {
+                let new_thread = document.createElement('tbody');
+
+                let new_tbody = document.createElement('tbody');
+                new_tbody.setAttribute("id", "project_table_body");
+
+                let element_tablerow = document.createElement("tr")
+
+                let element_employeeId = document.createElement("th")
+                let element_firstName = document.createElement("th")
+                let element_lastName = document.createElement("th")
+                let element_gender = document.createElement("th")
+                let element_position = document.createElement("th")
+                let element_saleryPerHour = document.createElement("th")
+                let element_titel = document.createElement("th")
+                let element_birthDate = document.createElement("th")
+                let element_informations = document.createElement("th")
+                let element_streetName = document.createElement("th")
+                let element_houseNumber = document.createElement("th")
+                let element_cityPostCode = document.createElement("th")
+                let element_cityName = document.createElement("th")
+                let element_state = document.createElement("th")
+                let element_country = document.createElement("th")
+                let element_username = document.createElement("th")
+                let element_role = document.createElement("th")
+
+                element_employeeId.innerText = "Mitarbeiter-ID"
+                element_firstName.innerText = "Vorname(n)"
+                element_lastName.innerText = "Nachname"
+                element_gender.innerText = "Geschlecht"
+                element_position.innerText = "Berufsposition"
+                element_saleryPerHour.innerText = "Bezahlung/Stunde (in €)"
+                element_titel.innerText = "Titel"
+                element_birthDate.innerText = "Geburtsdatum"
+                element_informations.innerText = "Informationen"
+                element_streetName.innerText = "Straßenname"
+                element_houseNumber.innerText = "Hausnummer"
+                element_cityPostCode.innerText = "PLZ"
+                element_cityName.innerText = "Stadt"
+                element_state.innerText = "Bundesland/Staat"
+                element_country.innerText = "Land"
+                element_username.innerText = "Benutzername"
+                element_role.innerText = "Rolle"
+
+                element_tablerow.appendChild(element_employeeId)
+                element_tablerow.appendChild(element_firstName)
+                element_tablerow.appendChild(element_lastName)
+                element_tablerow.appendChild(element_gender)
+                element_tablerow.appendChild(element_position)
+                element_tablerow.appendChild(element_saleryPerHour)
+                element_tablerow.appendChild(element_titel)
+                element_tablerow.appendChild(element_birthDate)
+                element_tablerow.appendChild(element_informations)
+                element_tablerow.appendChild(element_streetName)
+                element_tablerow.appendChild(element_houseNumber)
+                element_tablerow.appendChild(element_cityPostCode)
+                element_tablerow.appendChild(element_cityName)
+                element_tablerow.appendChild(element_state)
+                element_tablerow.appendChild(element_country)
+                element_tablerow.appendChild(element_username)
+                element_tablerow.appendChild(element_role)
 
                 new_thread.appendChild(element_tablerow);
 
