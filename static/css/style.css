@@ -190,7 +190,59 @@
 .cssbuttons-io-button3:active .icon3 {
   transform: scale(0.95);
 }
+.cssbuttons-io-button4 {
+  background: darkred;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em lightred;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
 
+.cssbuttons-io-button4 .icon4 {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em lightred;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button4:hover .icon4 {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button4 .icon4 svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: lightred;
+}
+
+.cssbuttons-io-button4:hover .icon4 svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button4:active .icon4 {
+  transform: scale(0.95);
+}
 .button {
   color: var(--dl-color-gray-black);
   display: inline-block;

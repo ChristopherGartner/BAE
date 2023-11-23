@@ -153,6 +153,16 @@ class BAE:
 
             return jsonify(selectedProjects)
 
+        @self.app.route('/api/v1/project_list_total', methods=['GET'])
+        def api_load_all_project_data():
+            userId = self.sessions.get_user_id(request.cookies.get("token", default="NOT FOUND"))
+
+            selectedProjects = self.db.execute(""
+                            f"SELECT project.idproject, customer.name, project.startDate, project.plannedEndingDate, project.budget, project.priority FROM project INNER JOIN customer ON project.idcustomer = customer.idcustomer;"
+                            )
+
+            return jsonify(selectedProjects)
+
         @self.app.route('/api/v1/customer_list_id_and_name', methods=['GET'])
         def api_load_customer_id_and_name():
             selectedCustomers = self.db.execute(f"SELECT customer.idcustomer, customer.name FROM customer")

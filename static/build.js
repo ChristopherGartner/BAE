@@ -219,6 +219,94 @@ function fillProjectTable()
 })
 }
 
+function fillAllProjectTable()
+{
+    document.getElementById("table_headline").innerText = "Gesamt-Projektübersicht"
+
+    fetch('/api/v1/project_list_total', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+}).then(res => res.json()).then(jsonRes => {
+    let new_thread = document.createElement('tbody');
+
+    let new_tbody = document.createElement('tbody');
+    new_tbody.setAttribute("id", "project_table_body");
+
+    let element_tablerow = document.createElement("tr")
+
+    let element_projectId = document.createElement("th")
+    let element_customer = document.createElement("th")
+    let element_startDate = document.createElement("th")
+    let element_endingDate = document.createElement("th")
+    let element_budget = document.createElement("th")
+    let element_priority = document.createElement("th")
+
+    element_projectId.innerText = "Projekt-ID"
+    element_customer.innerText = "Kunde"
+    element_startDate.innerText = "Startdatum"
+    element_endingDate.innerText = "Enddatum"
+    element_budget.innerText = "Budget"
+    element_priority.innerText = "Priorität"
+
+    element_tablerow.appendChild(element_projectId)
+    element_tablerow.appendChild(element_customer)
+    element_tablerow.appendChild(element_startDate)
+    element_tablerow.appendChild(element_endingDate)
+    element_tablerow.appendChild(element_budget)
+    element_tablerow.appendChild(element_priority)
+
+    new_thread.appendChild(element_tablerow);
+
+    let newTable = document.createElement("table");
+    newTable.setAttribute("class", "mitarbeiterbersicht-projekte-textIchHasseMeinLeben styled-table");
+    newTable.setAttribute("id", "project_table");
+
+    newTable.appendChild(new_thread);
+    newTable.appendChild(new_tbody);
+
+    $.each(jsonRes, function() {
+         let temp = this
+         let newRow = document.createElement("tr")
+         $.each(temp, function(){
+             let newCell = document.createElement("td")
+             newCell.innerText = this
+             newRow.appendChild(newCell)
+         })
+        let projectId = temp[0];
+
+        let editCell = document.createElement("td");
+        let editButton = document.createElement("a");
+        editButton.innerText = "Bearbeiten";
+        editButton.setAttribute("onclick", "window.location.href='/create_project?edit=1&id=" + projectId + "'")
+        editButton.setAttribute("onmousedown", "this.style.backgroundColor='#003100'")
+        editButton.setAttribute("onmouseup", "this.style.backgroundColor='#4CAF50'")
+        editButton.setAttribute("style", "display: inline-block; padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; cursor: pointer;")
+
+
+        editCell.appendChild(editButton);
+        newRow.appendChild(editCell);
+
+
+        let detailsCell = document.createElement("td");
+        let detailsButton = document.createElement("a");
+        detailsButton.innerText = "Details";
+        detailsButton.setAttribute("onclick", "window.location.href='/project/" + projectId + "'")
+        detailsButton.setAttribute("onmousedown", "this.style.backgroundColor='#CCAC4F'")
+        detailsButton.setAttribute("onmouseup", "this.style.backgroundColor='#FFD763'")
+        detailsButton.setAttribute("style", "display: inline-block; padding: 10px; background-color: #FFD763; color: white; text-decoration: none; border-radius: 5px; cursor: pointer;")
+
+
+        detailsCell.appendChild(detailsButton);
+        newRow.appendChild(detailsCell);
+
+        new_tbody.appendChild(newRow);
+    });
+
+    document.getElementById("project_table").parentNode.replaceChild(newTable, document.getElementById("project_table"));
+})
+}
+
+
 function fillCustomerTable() {
     document.getElementById("table_headline").innerText = "Kundenübersicht"
     fetch('/api/v1/customer_list', {
