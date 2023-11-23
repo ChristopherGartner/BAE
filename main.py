@@ -183,6 +183,11 @@ class BAE:
                 "userId": userId
             })
 
+        @self.app.route('/api/v1/edit_project_data/<project_id>')
+        def api_edit_project_data(project_id):
+            res = self.db.execute("SELECT project.idproject, project.idcustomer, customer.name, project.startDate, project.plannedEndingDate, project.budget, project.priority FROM project INNER JOIN customer ON project.idcustomer = customer.idcustomer WHERE idproject=%s;", (project_id,))
+            return jsonify(res[0])
+
         @self.app.route('/api/v1/project_data/<project_id>')
         def api_project_data(project_id):
             res = self.db.execute("SELECT * FROM project WHERE idproject=%s;", (project_id, ))
@@ -320,6 +325,18 @@ class BAE:
                 commit=True)
 
             return redirect("/create_project")
+
+        @self.app.route('/api/v1/update_project/<project_id>', methods=['POST'])
+        def api_update_project(project_id):
+            input_project_begin = request.form['input_project_begin']
+            input_project_end = request.form['input_project_end']
+            input_budget = request.form['input_budget']
+            input_priority = request.form['input_priority']
+            input_customer_id = request.form['input_customer_id']
+
+            self.db.execute(f"UPDATE project SET project.idcustomer = {input_customer_id}, project.startDate = '{input_project_begin}', project.plannedEndingDate = '{input_project_end}', project.budget = {input_budget}, project.priority = {input_priority} WHERE project.idproject = {project_id};", commit=True)
+
+            return redirect("/create_project?edit=1&id=" + project_id)
 
         @self.app.route('/api/v1/create_customer', methods=['POST'])
         def api_create_customer():
