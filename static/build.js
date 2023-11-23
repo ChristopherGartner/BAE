@@ -385,7 +385,7 @@ function fillEmployeeTable() {
             let editCell = document.createElement("td");
             let editButton = document.createElement("a");
             editButton.innerText = "Bearbeiten";
-            editButton.setAttribute("onclick", "window.location.href='{{url_for('createUser')}}?edit=1&id=" + employeeId + "'")
+            editButton.setAttribute("onclick", "window.location.href='/create_user?edit=1&id=" + employeeId + "'")
             editButton.setAttribute("onmousedown", "this.style.backgroundColor='#003100'")
             editButton.setAttribute("onmouseup", "this.style.backgroundColor='#4CAF50'")
             editButton.setAttribute("style", "display: inline-block; padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; cursor: pointer;")
