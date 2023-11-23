@@ -75,12 +75,10 @@ class Sessions:
         for s in self._sessions:
             salutation = ""
             if s.token == token:
-                match s.gender:
-                    case 'M':
-                        salutation = "Herr"
-
-                    case 'F':
-                        salutation = "Frau"
+                if s.gender == 'M':
+                    salutation = "Herr"
+                elif s.gender == 'F':
+                    salutation = "Frau"
 
                 return f"{salutation} {s.firstName} {s.lastName}"
 
