@@ -25,6 +25,26 @@ html, body {
     align-items: center;
 }
 
+.submit {
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 5px;
+    width: 26px;
+    transition: 0.3s;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background: #defce6;
+}
+
+.submit:hover {
+    background: #0b6100;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
 .hoverInput {
 
 }

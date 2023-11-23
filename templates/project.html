@@ -53,14 +53,80 @@
 {% block body %}
     {{ super() }}
     <div class="vc">
-        <h1>Projekt []</h1>
-        <div class="hc">
-            <div class="vc">
-                <label>Kunde:</label>
-                <label id="kunde">XYZ</label>
+        <h1 id="project_title">Projekt []</h1>
+        <div class="hc" style="width:100%;">
+            <div class="vc" style="width: 40%; margin-right: 50px; margin-left: 50px;">
+                <table>
+                    <tr>
+                        <td>
+                            <label>Kunde:</label>
+                        </td>
+                        <td>
+                            <label id="customer"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Startdatum:</label>
+                        </td>
+                        <td>
+                            <label id="date_start"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Enddatum:</label>
+                        </td>
+                        <td>
+                            <label id="date_end"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Priorität:</label>
+                        </td>
+                        <td>
+                            <label id="priority"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Budget:</label>
+                        </td>
+                        <td>
+                            <label id="budget"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Angelegt von:</label>
+                        </td>
+                        <td>
+                            <label id="created_by"></label>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div class="vc">
+            <div class="vc" style="width: 40%; margin-left: 50px;">
+                <h3>Benutzer hinzufügen:</h3>
+                <div class="hc">
+                    <select id="users_add">
 
+                    </select>
+                    <button class="submit" onclick="add_user()">
+                        +
+                    </button>
+                </div>
+                <br>
+                <h3>Benutzer entfernen:</h3>
+                <div class="hc">
+                    <select id="users_remove">
+
+                    </select>
+                    <button class="submit" onclick="remove_user()">
+                        -
+                    </button>
+                </div>
             </div>
         </div>
     </div>
