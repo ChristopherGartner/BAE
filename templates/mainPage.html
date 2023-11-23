@@ -204,7 +204,20 @@
                      newCell.innerText = this
                      newRow.appendChild(newCell)
                  })
-                 new_tbody.appendChild(newRow)
+                let projectId = temp[0];
+
+                let editCell = document.createElement("td");
+                let editButton = document.createElement("a");
+                editButton.innerText = "Bearbeiten";
+                editButton.setAttribute("onclick", "window.location.href='{{url_for('createProject')}}?edit=1&id=" + projectId + "'")
+                editButton.setAttribute("onmousedown", "this.style.backgroundColor='#FF5733'")
+                editButton.setAttribute("onmouseup", "this.style.backgroundColor='#4CAF50'")
+                editButton.setAttribute("style", "display: inline-block; padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;")
+
+                editCell.appendChild(editButton);
+                newRow.appendChild(editCell)
+
+                new_tbody.appendChild(newRow)
             });
 
             document.getElementById("project_table").parentNode.replaceChild(newTable, document.getElementById("project_table"));
@@ -268,6 +281,19 @@
                         newCell.innerText = this
                         newRow.appendChild(newCell)
                     })
+                    let customerId = temp[0];
+
+                    let editCell = document.createElement("td");
+                    let editButton = document.createElement("a");
+                    editButton.innerText = "Bearbeiten";
+                    editButton.setAttribute("onclick", "window.location.href='{{url_for('createCustomer')}}?edit=1&id=" + customerId + "'")
+                    editButton.setAttribute("onmousedown", "this.style.backgroundColor='#FF5733'")
+                    editButton.setAttribute("onmouseup", "this.style.backgroundColor='#4CAF50'")
+                    editButton.setAttribute("style", "display: inline-block; padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;")
+
+                    editCell.appendChild(editButton);
+                    newRow.appendChild(editCell)
+
                     new_tbody.appendChild(newRow)
                 });
 
@@ -359,6 +385,19 @@
                         newCell.innerText = this
                         newRow.appendChild(newCell)
                     })
+                    let employeeId = temp[0];
+
+                    let editCell = document.createElement("td");
+                    let editButton = document.createElement("a");
+                    editButton.innerText = "Bearbeiten";
+                    editButton.setAttribute("onclick", "window.location.href='{{url_for('createUser')}}?edit=1&id=" + employeeId + "'")
+                    editButton.setAttribute("onmousedown", "this.style.backgroundColor='#FF5733'")
+                    editButton.setAttribute("onmouseup", "this.style.backgroundColor='#4CAF50'")
+                    editButton.setAttribute("style", "display: inline-block; padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;")
+
+                    editCell.appendChild(editButton);
+                    newRow.appendChild(editCell)
+
                     new_tbody.appendChild(newRow)
                 });
 

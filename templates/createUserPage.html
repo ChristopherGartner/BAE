@@ -49,6 +49,70 @@
       }
     </style>
     <script>
+        function loadPage()
+        {
+            showOrHideErrorField()
+            editModeInitialization()
+        }
+
+        function editModeInitialization()
+        {
+            let params = new URLSearchParams(window.location.search);
+
+            let inEditMode = params.get("edit");
+            let id = params.get("id");
+
+            if(inEditMode == "1") {
+
+                fetch('/api/v1/edit_user_data/' + id, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'}
+            }).then(res => res.json()).then(jsonRes => {
+                    let streetName = jsonRes[0];
+                    let houseNumber = jsonRes[1];
+                    let cityName = jsonRes[2];
+                    let postCode = jsonRes[3];
+                    let country = jsonRes[4];
+                    let state = jsonRes[5];
+                    let titel = jsonRes[6];
+                    let position = jsonRes[7];
+                    let gender = jsonRes[8];
+                    let birthDate = jsonRes[9];
+                    let firstName = jsonRes[10];
+                    let lastName = jsonRes[11];
+                    let saleryPerHour = jsonRes[12];
+                    let role = jsonRes[13];
+                    let username = jsonRes[14];
+                    let password = jsonRes[15];
+                    let informations = jsonRes[16];
+
+                    document.getElementById("headline").innerText = "Benutzerbearbeitung für Benutzer mit Id '" + id + "'";
+
+                    document.getElementById("input_street").value = streetName;
+                    document.getElementById("input_house_number").value = houseNumber;
+                    document.getElementById("input_city").value = cityName;
+                    document.getElementById("input_PLZ").value = postCode;
+                    document.getElementById("input_country").value = country;
+                    document.getElementById("input_state").value = state;
+                    document.getElementById("input_title").value = titel;
+                    document.getElementById("input_job_position").value = position;
+                    document.getElementById("input_gender").value = gender;
+                    document.getElementById("input_birth_date").value = (new Date(birthDate)).toISOString().substring(0, 10);
+                    document.getElementById("input_first_name").value = firstName;
+                    document.getElementById("input_last_name").value = lastName;
+                    document.getElementById("input_salery_per_hour").value = saleryPerHour;
+                    document.getElementById("input_role").value = role;
+                    document.getElementById("input_username").value = username;
+                    document.getElementById("input_password").value = password;
+                    document.getElementById("input_informations").value = informations;
+
+                    document.getElementById("submitButton").innerText = "Bearbeiten";
+                    document.getElementById("submitButton").setAttribute("value", "update_user/" + id);
+                    document.getElementById("submit_form").setAttribute("action", "/api/v1/update_user/" + id);
+                })
+            }
+        }
+
         function showOrHideErrorField() {
             let params = new URLSearchParams(window.location.search);
 
@@ -69,19 +133,19 @@
 {% block body %}
     {{ super() }}
     <script>
-        window.onload = showOrHideErrorField;
+        window.onload = loadPage;
     </script>
     <link rel="stylesheet" href="./style.css" />
     <div>
       <link href="./benutzer-anlegen.css" rel="stylesheet" />
 
       <div class="benutzer-anlegen-container">
-          <h1 class="benutzer-anlegen-text" style="margin-left: 90px">Benutzererfassung</h1>
+          <h1 class="benutzer-anlegen-text" style="margin-left: 90px" id="headline">Benutzererfassung</h1>
           <div class="hc" style="padding: 100px">
               <div class="vc">
                 <div class="benutzer-anlegen-banner vc" style="align-items: flex-start"></div>
                   <label id="error_label" style="color: red; margin-bottom: 30px"></label>
-                  <form action="/api/v1/create_user" method="POST" class="vc" style="align-items: flex-start">
+                  <form action="/api/v1/create_user" method="POST" class="vc" style="align-items: flex-start" id="submit_form">
                       <div class="hc" style="margin-bottom: 20px" title="Der Name der Straße, in welcher der Mitarbeiter wohnt!">
                           <label
                               style="margin-right: 20px;
@@ -224,9 +288,9 @@
                           id="input_gender"
                           name="input_gender"
                         >
-                            <option value="m">männlich</option>
-                            <option value="f">weiblich</option>
-                            <option value="d">divers</option>
+                            <option value="M">männlich</option>
+                            <option value="F">weiblich</option>
+                            <option value="D">divers</option>
                         </select>
                       </div>
                       <div class="hc" style="margin-bottom: 20px" title="Das Geburtsdatum des Mitarbeiters!">
@@ -306,9 +370,9 @@
                           id="input_role"
                           name="input_role"
                         >
-                            <option value="10">Mitarbeiter</option>
-                            <option value="100">CEO</option>
-                            <option value="1000">Systemadministrator</option>
+                            <option value="1">Mitarbeiter</option>
+                            <option value="2">CEO</option>
+                            <option value="3">Systemadministrator</option>
                         </select>
                       </div>
                       <div class="hc" style="margin-bottom: 20px" title="Der Nutzername des Mitarbeiters. Dieser wird für den Login in die Anwendung verwendet!">
@@ -355,29 +419,10 @@
                               class="benutzer-anlegen-textarea textarea"
                               id="input_informations"
                               name="input_informations"
-                              style="margin-bottom: 20px"
                           >
                           </textarea>
                       </div>
-                       <style>
-                        .benutzer-anlegen-button {
-                            background-color: #3498db;
-                            color: #fff;
-                            padding: 10px 20px;
-                            border: none;
-                            cursor: pointer;
-                            transition: background-color 0.3s;
-                        }
-
-                        .benutzer-anlegen-button:hover {
-                            background-color: #2980b9;
-                        }
-
-                        .benutzer-anlegen-button:active {
-                            background-color: #1c688b;
-                        }
-                    </style>
-                      <button type="submit" value="create_user" class="benutzer-anlegen-button button">
+                      <button type="submit" value="create_user" class="benutzer-anlegen-button button" id="submitButton">
                           Benutzer anlegen
                       </button>
                   </form>
