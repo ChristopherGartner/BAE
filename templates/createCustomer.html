@@ -179,7 +179,6 @@
                           type="text"
                           placeholder="Musterland"
                           class="benutzer-anlegen-textinput06 input"
-                          style="margin-bottom: 20px"
                           id="input_country"
                           name="input_country"
                           onmouseover="color='#87CEFAFF'"
@@ -199,11 +198,30 @@
                               class="benutzer-anlegen-textinput08 input"
                               id="input_state"
                               name="input_state"
+                              style="margin-bottom: 20px"
                           />
                       </div>
-                      <button type="submit" value="create_customer" class="benutzer-anlegen-button button">
-                            Kunde anlegen
-                      </button>
+                      <style>
+                        .benutzer-anlegen-button {
+                            background-color: #3498db;
+                            color: #fff;
+                            padding: 10px 20px;
+                            border: none;
+                            cursor: pointer;
+                            transition: background-color 0.3s;
+                        }
+
+                        .benutzer-anlegen-button:hover {
+                            background-color: #2980b9;
+                        }
+
+                        .benutzer-anlegen-button:active {
+                            background-color: #1c688b;
+                        }
+                    </style>
+                    <button type="submit" value="create_customer" class="benutzer-anlegen-button button">
+                     Kunde anlegen
+                     </button>
                   </form>
               </div>
               <img

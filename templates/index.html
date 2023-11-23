@@ -53,26 +53,29 @@
 {% block body %}
     {{ super() }}
     <link rel="stylesheet" href="../static/css/style.css" />
-    <div>
-      <link href="../static/css/index.css" rel="stylesheet" />
 
-      <div class="home-container">
-        <div class="home-hero">
-          <div class="home-hero-text-container">
-            <h1 class="home-heading">Atlas</h1>
-            <span class="home-text">
-              <span class="home-text1">Your digital working area</span>
-              <br />
-            </span>
-            <button id="loginButton" class="home-cta-btn button" onclick="window.location.href='{{ url_for('login') }}'">LOGIN</button>
-          </div>
-          <img
-            alt="image"
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDQ4fHx3b3JraW5nJTIwYXJlYSUyMHByb2plY3R8ZW58MHx8fHwxNjk5NDQ2MjAwfDA&amp;ixlib=rb-4.0.3&amp;w=1500"
-            class="home-image"
-          />
+    <div>
+        <link href="../static/css/index.css" rel="stylesheet" />
+
+        <div class="home-container">
+            <div class="home-hero">
+                <div class="home-hero-text-container">
+                    <h1 class="home-heading">Atlas</h1>
+                    <span class="home-text">
+                        <span class="home-text1">Your digital working area</span>
+                        <br />
+                    </span>
+                    <button id="loginButton" class="home-cta-btn button" onclick="window.location.href='{{ url_for('login') }}'">LOGIN</button>
+                </div>
+                <!-- Keep the existing image tag as it is -->
+                <img
+                    alt="image"
+                    src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDQ4fHx3b3JraW5nJTIwYXJlYSUyMHByb2plY3R8ZW58MHx8fHwxNjk5NDQ2MjAwfDA&amp;ixlib=rb-4.0.3&amp;w=1500"
+                    class="home-image"
+
+                />
+            </div>
         </div>
-      </div>
     </div>
     <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     <script defer>
@@ -81,6 +84,5 @@
             btn.onclick = function() {  window.location.href = '{{ url_for('mainPage') }}'  };
             btn.textContent = "Dashboard"
         }
-
     </script>
 {% endblock %}
