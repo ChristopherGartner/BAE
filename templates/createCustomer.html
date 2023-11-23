@@ -49,52 +49,6 @@
       }
     </style>
     <script>
-
-        function loadPage()
-        {
-            showOrHideErrorField()
-            editModeInitialization()
-        }
-
-         function editModeInitialization()
-        {
-            let params = new URLSearchParams(window.location.search);
-
-            let inEditMode = params.get("edit");
-            let id = params.get("id");
-
-            if(inEditMode == "1") {
-
-                fetch('/api/v1/edit_customer_data/' + id, {
-                method: 'GET',
-                headers: {'Content-Type': 'application/json'}
-            }).then(res => res.json()).then(jsonRes => {
-                    let customerId = jsonRes[0];
-                    let customerName = jsonRes[1];
-                    let streetName = jsonRes[2];
-                    let houseNumber = jsonRes[3];
-                    let cityName = jsonRes[4];
-                    let postCode = jsonRes[5];
-                    let country = jsonRes[6];
-                    let state = jsonRes[7];
-
-                    document.getElementById("headline").innerText = "Kundenbearbeitung für Kunde mit Id '" + customerId + "'";
-
-                    document.getElementById("input_name").value = customerName;
-                    document.getElementById("input_street").value = streetName;
-                    document.getElementById("input_house_number").value = houseNumber;
-                    document.getElementById("input_city").value = cityName;
-                    document.getElementById("input_plz").value = postCode;
-                    document.getElementById("input_country").value = country;
-                    document.getElementById("input_state").value = state;
-
-                    document.getElementById("submitButton").innerText = "Bearbeiten";
-                    document.getElementById("submitButton").setAttribute("value", "update_project/" + customerId);
-                    document.getElementById("submit_form").setAttribute("action", "/api/v1/update_customer/" + customerId);
-                })
-            }
-        }
-
         function showOrHideErrorField() {
             let params = new URLSearchParams(window.location.search);
 
@@ -115,19 +69,19 @@
 {% block body %}
     {{ super() }}
     <script>
-        window.onload = loadPage;
+        window.onload = showOrHideErrorField;
     </script>
     <link rel="stylesheet" href="./style.css" />
     <div>
       <link href="./benutzer-anlegen.css" rel="stylesheet" />
 
       <div class="benutzer-anlegen-container">
-          <h1 class="benutzer-anlegen-text" style="margin-left: 90px" id="headline">Kundenerfassung</h1>
+          <h1 class="benutzer-anlegen-text" style="margin-left: 90px">Kundenerfassung</h1>
           <div class="hc" style="padding: 100px">
               <div class="vc">
                 <div class="benutzer-anlegen-banner vc"></div>
                   <label id="error_label" style="color: red; margin-bottom: 30px"></label>
-                  <form action="/api/v1/create_customer" method="POST" class="vc" style="align-items: flex-start" id="submit_form">
+                  <form action="/api/v1/create_customer" method="POST" class="vc" style="align-items: flex-start">
                       <div class="hc" style="margin-bottom: 20px" title="Der Name des Kunden!">
                         <label
                           style="margin-right: 20px;
@@ -225,7 +179,6 @@
                           type="text"
                           placeholder="Musterland"
                           class="benutzer-anlegen-textinput06 input"
-                          style="margin-bottom: 20px"
                           id="input_country"
                           name="input_country"
                           onmouseover="color='#87CEFAFF'"
@@ -245,11 +198,30 @@
                               class="benutzer-anlegen-textinput08 input"
                               id="input_state"
                               name="input_state"
+                              style="margin-bottom: 20px"
                           />
                       </div>
-                      <button type="submit" value="create_customer" class="benutzer-anlegen-button button" id="submitButton">
-                            Kunde anlegen
-                      </button>
+                      <style>
+                        .benutzer-anlegen-button {
+                            background-color: #3498db;
+                            color: #fff;
+                            padding: 10px 20px;
+                            border: none;
+                            cursor: pointer;
+                            transition: background-color 0.3s;
+                        }
+
+                        .benutzer-anlegen-button:hover {
+                            background-color: #2980b9;
+                        }
+
+                        .benutzer-anlegen-button:active {
+                            background-color: #1c688b;
+                        }
+                    </style>
+                    <button type="submit" value="create_customer" class="benutzer-anlegen-button button">
+                     Kunde anlegen
+                     </button>
                   </form>
               </div>
               <img
