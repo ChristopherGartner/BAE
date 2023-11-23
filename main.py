@@ -188,6 +188,13 @@ class BAE:
             res = self.db.execute("SELECT project.idproject, project.idcustomer, customer.name, project.startDate, project.plannedEndingDate, project.budget, project.priority FROM project INNER JOIN customer ON project.idcustomer = customer.idcustomer WHERE idproject=%s;", (project_id,))
             return jsonify(res[0])
 
+        @self.app.route('/api/v1/edit_customer_data/<customer_id>')
+        def api_edit_customer_data(customer_id):
+            res = self.db.execute(
+                "SELECT customer.idcustomer, customer.name, Address.streetName, Address.houseNumber, city.cityName, city.postCode, city.country, city.state FROM customer INNER JOIN Address ON customer.idaddress = Address.idaddress INNER JOIN city ON Address.idcity = city.idcity WHERE customer.idcustomer=%s;",
+                (customer_id,))
+            return jsonify(res[0])
+
         @self.app.route('/api/v1/project_data/<project_id>')
         def api_project_data(project_id):
             res = self.db.execute("SELECT * FROM project WHERE idproject=%s;", (project_id, ))
@@ -397,6 +404,25 @@ class BAE:
                 commit=True)
 
             return redirect("/create_customer")
+
+        @self.app.route('/api/v1/update_customer/<customer_id>', methods=['POST'])
+        def api_update_customer(customer_id):
+            input_name = request.form['input_name']
+            input_street = request.form['input_street']
+            input_house_number = request.form['input_house_number']
+            input_city = request.form['input_city']
+            input_plz = request.form['input_plz']
+            input_country = request.form['input_country']
+            input_state = request.form['input_state']
+
+            addressId = self.db.execute(f"SELECT customer.idaddress FROM customer WHERE customer.idcustomer = {customer_id};")[0][0]
+            cityId = self.db.execute(f"SELECT Address.idcity FROM Address WHERE Address.idAddress = {addressId};")[0][0]
+
+            self.db.execute(f"UPDATE customer SET customer.name = '{input_name}' WHERE customer.idcustomer = {customer_id};", commit=True)
+            self.db.execute(f"UPDATE Address SET Address.houseNumber = {input_house_number}, Address.streetName = '{input_street}' WHERE Address.idaddress = {addressId};", commit=True)
+            self.db.execute(f"UPDATE city SET city.country = '{input_country}', city.postCode = '{input_plz}', city.state = '{input_state}', city.cityName = '{input_city}' WHERE city.idcity = {cityId};", commit=True)
+
+            return redirect("/create_customer?edit=1&id=" + customer_id)
 
         @self.app.route('/android-chrome-192x192.png')
         @self.app.route('/android-chrome-512x512.png')
