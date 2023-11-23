@@ -28,13 +28,12 @@ html, body {
 .submit {
     border: 1px solid;
     border-radius: 5px;
-    margin: 5px;
-    width: 26px;
+    width: 46px;
+    height: 46px;
     transition: 0.3s;
     text-align: center;
-    height: 36px;
     line-height: 36px;
-    margin-bottom: 15px;
+    margin-left: 5px;
     cursor: pointer;
     background: #defce6;
 }

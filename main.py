@@ -216,6 +216,23 @@ class BAE:
         def api_all_users():
             return jsonify(self.db.execute("SELECT * FROM BAE.employee;"))
 
+
+        @self.app.route('/api/v1/project_add_user', methods=['POST'])
+        def api_project_add_user():
+            print(request.json)
+            self.db.execute("INSERT INTO projectEmployee VALUES(%s, %s, false);",
+                            (request.json["user_id"], request.json["project_id"],), commit=True)
+            return jsonify({"status": 200})
+
+
+        @self.app.route('/api/v1/project_remove_user', methods=['POST'])
+        def api_project_remove_user():
+            print(request.json)
+            self.db.execute("DELETE FROM projectEmployee WHERE idemployee = %s AND idproject = %s;",
+                            (request.json["user_id"], request.json["project_id"],), commit=True)
+            return jsonify({"status": 200})
+
+
         @self.app.route('/api/v1/create_user', methods=['POST'])
         def api_create_user():
             input_street = request.form['input_street']

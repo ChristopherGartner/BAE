@@ -1,4 +1,4 @@
-
+var proj_id = 0;
 
 function setup_login_form(){
     console.log("preparing login")
@@ -26,6 +26,7 @@ function build_project_page() {
     tmp = window.location.pathname.split("/")
     proj_id = tmp[tmp.length - 1]
 
+
     fetch('/api/v1/project_data/' + proj_id, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
@@ -43,7 +44,41 @@ function build_project_page() {
 
 
         $.each(us, function(){
-            console.log(this)
+            if(this[15] == 1){
+               document.getElementById("created_by").innerText = this[1] + " " + this[2]
+               var op = document.createElement("option")
+               op.value = this[0]
+               op.innerText = this[2] + ", " + this[1] + " (Ersteller)"
+               op.disabled = true;
+               op.style = "background-color: lightgrey;"
+               document.getElementById("users_remove").appendChild(op);
+            } else {
+               var op = document.createElement("option")
+               op.value = this[0]
+               op.innerText = this[2] + ", " + this[1]
+               document.getElementById("users_remove").appendChild(op);
+            }
+        })
+
+        fetch('/api/v1/all_users', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        }).then(res => res.json()).then(resp => {
+            $.each(resp, function() {
+                var u1 = this
+                var isContained = false
+                $.each(us, function() {
+                    if(u1[0] == this[0]){
+                        isContained = true
+                    }
+                })
+                if(!isContained){
+                   var op = document.createElement("option")
+                   op.value = this[0]
+                   op.innerText = this[2] + ", " + this[1]
+                   document.getElementById("users_add").appendChild(op);
+                }
+            })
         })
     })
 }
@@ -55,6 +90,22 @@ function remove_user() {
     if(val === ""){
         return
     }
+
+    (async () => {
+      const rawResponse = await fetch('/api/v1/project_remove_user', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"project_id": proj_id, "user_id": val})
+      });
+      const content = await rawResponse.json();
+
+      console.log(content);
+      location.reload();
+    })();
+
 }
 
 function add_user() {
@@ -63,6 +114,21 @@ function add_user() {
     if(val === ""){
         return
     }
+
+    (async () => {
+      const rawResponse = await fetch('/api/v1/project_add_user', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"project_id": proj_id, "user_id": val})
+      });
+      const content = await rawResponse.json();
+
+      console.log(content);
+      location.reload();
+    })();
 }
 
 
