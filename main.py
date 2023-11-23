@@ -378,6 +378,8 @@ class BAE:
             error_text = None
             error_occurred = False
 
+            user_id = self.sessions.get_user_id(request.cookies.get("token", default="NOT FOUND"))
+
             if input_customer_id == "":
                 error_text = "Das Kunden-ID-Feld wurde nicht befüllt!"
             elif input_project_begin == "":
@@ -401,7 +403,12 @@ class BAE:
                 "INSERT INTO project(idcustomer, startDate, plannedEndingDate, idaddress, priority, budget) VALUES "
                 + "(" + input_customer_id + ", '" + input_project_begin + "','" + input_project_end + "',3,'" + input_priority + "'," + input_budget + ");",
                 commit=True)
-
+            res = self.db.execute(
+                "SELECT idproject FROM project WHERE idcustomer = %s AND startDate = %s AND plannedEndingDate = %s AND idaddress = %s AND priority = %s AND budget = %s;", (input_customer_id, input_project_begin, input_project_end, 3, input_priority, input_budget, )
+            )
+            self.db.execute(
+                "INSERT INTO projectEmployee VALUES(%s, %s, %s);", (user_id, res[0][0], 1,), commit=True
+            )
             return redirect("/create_project")
 
         @self.app.route('/api/v1/update_project/<project_id>', methods=['POST'])
