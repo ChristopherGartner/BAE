@@ -21,4 +21,11 @@ function setup_login_form(){
     ;
 }
 
+function build_project_page() {
+    console.log("Building project page...")
+
+
+}
+
+
 

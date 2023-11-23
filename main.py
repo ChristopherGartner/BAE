@@ -97,7 +97,8 @@ class BAE:
             token = request.cookies.get('token', default='')
             if not self.sessions.validate(token):
                 return redirect("/login")
-            return render_template("mainPage.html", user_permission_level=self.sessions.get_user_permission_level(token))
+            user_id = self.sessions.get_user_id(token)
+            return render_template("mainPage.html", user_permission_level=self.sessions.get_user_permission_level(token), user_id=str(user_id))
 
         @self.app.route('/create_user', methods=['GET'])
         def createUser():
